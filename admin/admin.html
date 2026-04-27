@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard - Gympro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+
+    <style>
+        body { font-family: 'DM Sans', sans-serif; background: #f8f9fa; }
+        .sidebar { min-height: 100vh; background: #2c3e50; color: #ecf0f1; }
+        .nav-link { color: #ecf0f1 !important; }
+        .nav-link.active, .nav-link:hover { background: #e74c3c; color: white !important; }
+        .table th { background: #34495e; color: white; }
+        .ql-container { min-height: 300px; background: white; }
+        .chat-box { max-height: 450px; overflow-y: auto; background: #f8f9fa; border: 1px solid #ddd; border-radius: 8px; padding: 15px; }
+        .badge-suspended { background: #dc3545; }
+    </style>
+</head>
+<body>
+
+<div class="d-flex">
+    <div class="sidebar p-3" style="width: 260px;">
+        <a class="navbar-brand" href="/index.html">
+            <img style="margin-bottom: 30px;" src="/images/logo.png" alt="Logo">
+        </a>
+        <ul class="nav flex-column">
+            <li class="nav-item"><a href="/index.html" class="nav-link">🏠 Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link active" onclick="showSection('clients')">👥 Clients</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('blog')">📝 Blog Posts</a></li>
+            <li class="nav-item mt-3"><a href="#" onclick="logout()" class="nav-link text-danger">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="flex-grow-1 p-4">
+
+        <!-- Clients Section -->
+        <div id="clients-section">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Clients Management</h2>
+                <span id="user-email-clients" class="fw-bold"></span>
+            </div>
+
+            <input type="text" id="client-search" class="form-control mb-3" placeholder="Search clients..." onkeyup="filterClients()">
+
+            <table class="table table-hover" id="clients-table">
+                <thead>
+                    <tr>
+                        <th>Client Name</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                        <th>Management</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Blog Section -->
+        <div id="blog-section" style="display: none;">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Blog Posts Management</h2>
+                <div>
+                    <span id="user-email" class="me-3 fw-bold"></span>
+                    <button onclick="newPost()" class="btn btn-danger">+ New Blog Post</button>
+                </div>
+            </div>
+
+            <input type="text" id="search-input" class="form-control mb-3" placeholder="Search posts..." onkeyup="filterPosts()">
+
+            <table class="table table-hover align-middle" id="posts-table">
+                <thead><tr><th>Title</th><th>Date</th><th>Tags</th><th>Actions</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Blog Modal -->
+<div class="modal fade" id="postModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title">New Blog Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="post-form">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="mb-3"><label class="form-label">Title</label>
+                                <input type="text" id="title" class="form-control" required></div>
+                            <div class="mb-3"><label class="form-label">Featured Image URL</label>
+                                <input type="text" id="featuredImage" class="form-control" placeholder="https://..."></div>
+                            <div class="mb-3"><label class="form-label">Content</label>
+                                <div id="editor" style="height: 400px;"></div></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3"><label class="form-label">Date</label>
+                                <input type="date" id="date" class="form-control" required></div>
+                            <div class="mb-3"><label class="form-label">Tags</label>
+                                <input type="text" id="tags" class="form-control" placeholder="Workouts, Nutrition..."></div>
+                            <div class="mb-3"><label class="form-label">Slug</label>
+                                <input type="text" id="slug" class="form-control" readonly></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" onclick="savePost()" class="btn btn-danger">Save Post</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Profile Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Client Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="profile-modal-body"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Assign Content Modal -->
+<div class="modal fade" id="assignModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="assign-modal-title">Assign Personalized Content</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <button onclick="viewAssignedContentList()" class="btn btn-outline-primary mb-3">View All Assigned Content</button>
+                
+                <form id="content-form">
+                    <input type="hidden" id="content-id">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Title</label>
+                                <input type="text" id="content-title" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea id="content-desc" class="form-control" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Media URL (YouTube or Image)</label>
+                                <input type="text" id="media-url" class="form-control" placeholder="https://youtu.be/... or https://image-url.jpg">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Additional Notes / Nutrition Plan</label>
+                                <textarea id="content-text" class="form-control" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" onclick="saveAssignedContent()" class="btn btn-danger w-100">Save Content</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Assigned Content List Modal -->
+<div class="modal fade" id="assignedListModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Assigned Content List</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="assigned-list-body"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Chat Modal -->
+<div class="modal fade" id="chatModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="chat-modal-title">Conversation with Client</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="chat-messages" class="chat-box border p-3 bg-light mb-3" style="max-height: 450px; overflow-y: auto;"></div>
+                <div class="input-group">
+                    <textarea id="admin-reply" class="form-control" rows="3" placeholder="Type your reply here..."></textarea>
+                    <button onclick="sendReply()" class="btn btn-danger">Send Reply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+    import { getFirestore, collection, onSnapshot, addDoc, doc, getDoc, query, where, orderBy, getDocs, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyD01C6Flcgy_so_EvWNTINttczzoexJPck",
+        authDomain: "dagi-aman-gym.firebaseapp.com",
+        projectId: "dagi-aman-gym",
+        storageBucket: "dagi-aman-gym.firebasestorage.app",
+        messagingSenderId: "193829259951",
+        appId: "1:193829259951:web:64cc23ec8499006519e25a"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let quillEditor = null;
+    let currentEditId = null;
+    let currentClientId = null;
+    let currentEditingContentId = null;
+    let allPosts = [];
+    let allClients = [];
+
+    onAuthStateChanged(auth, async (user) => {
+        if (!user) return window.location.href = "/login2/login.html";
+
+        const token = await user.getIdTokenResult();
+        if (!token.claims.admin) {
+            alert("Access Denied");
+            signOut(auth);
+            return;
+        }
+
+        document.getElementById("user-email").textContent = `👤 ${user.email}`;
+        document.getElementById("user-email-clients").textContent = `👤 ${user.email}`;
+
+        loadPosts();
+        loadClients();
+    });
+
+    // ====================== BLOG SECTION ======================
+    // (Your existing blog code - unchanged)
+    function loadPosts() {
+        const tbody = document.querySelector("#posts-table tbody");
+        const q = query(collection(db, "blogPosts"), orderBy("date", "desc"));
+
+        onSnapshot(q, (snapshot) => {
+            allPosts = [];
+            tbody.innerHTML = "";
+            snapshot.forEach(docSnap => {
+                const post = { id: docSnap.id, ...docSnap.data() };
+                allPosts.push(post);
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${post.title || ''}</strong></td>
+                        <td>${post.date || ''}</td>
+                        <td>${post.tags ? post.tags.join(", ") : ''}</td>
+                        <td>
+                            <button onclick="editPost('${post.id}')" class="btn btn-sm btn-outline-primary me-1">Edit</button>
+                            <button onclick="deletePost('${post.id}')" class="btn btn-sm btn-outline-danger">Delete</button>
+                            <a href="/blog-single.html?slug=${post.slug}" target="_blank" class="btn btn-sm btn-outline-secondary ms-1">View</a>
+                        </td>
+                    </tr>`;
+            });
+        });
+    }
+
+    function newPost() {
+        currentEditId = null;
+        document.getElementById("modal-title").textContent = "New Blog Post";
+        document.getElementById("post-form").reset();
+        document.getElementById("date").value = new Date().toISOString().split("T")[0];
+        if (!quillEditor) initQuill();
+        quillEditor.root.innerHTML = "";
+        new bootstrap.Modal(document.getElementById("postModal")).show();
+    }
+
+    function initQuill() {
+        quillEditor = new Quill('#editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{ 'header': [2, 3, false] }],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    ['blockquote'],
+                    ['clean']
+                ]
+            }
+        });
+    }
+
+    async function savePost() {
+        const title = document.getElementById("title").value.trim();
+        if (!title) return alert("Title is required!");
+
+        const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+        const postData = {
+            title, slug,
+            date: document.getElementById("date").value,
+            featuredImage: document.getElementById("featuredImage").value || "images/post-1.jpg",
+            content: quillEditor ? quillEditor.root.innerHTML : "",
+            tags: document.getElementById("tags").value.split(",").map(t => t.trim()).filter(Boolean),
+            author: "Admin"
+        };
+
+        try {
+            if (currentEditId) await updateDoc(doc(db, "blogPosts", currentEditId), postData);
+            else await addDoc(collection(db, "blogPosts"), postData);
+
+            bootstrap.Modal.getInstance(document.getElementById("postModal")).hide();
+            alert("Post saved successfully!");
+        } catch (e) {
+            alert("Error saving post: " + e.message);
+        }
+    }
+
+    async function editPost(id) {
+        currentEditId = id;
+        const docSnap = await getDoc(doc(db, "blogPosts", id));
+        if (!docSnap.exists()) return alert("Post not found");
+
+        const post = docSnap.data();
+        document.getElementById("modal-title").textContent = "Edit Blog Post";
+        document.getElementById("title").value = post.title || "";
+        document.getElementById("date").value = post.date || "";
+        document.getElementById("featuredImage").value = post.featuredImage || "";
+        document.getElementById("tags").value = post.tags ? post.tags.join(", ") : "";
+        document.getElementById("slug").value = post.slug || "";
+
+        if (!quillEditor) initQuill();
+        quillEditor.root.innerHTML = post.content || "";
+
+        new bootstrap.Modal(document.getElementById("postModal")).show();
+    }
+
+    async function deletePost(id) {
+        if (!confirm("Delete this post?")) return;
+        await deleteDoc(doc(db, "blogPosts", id));
+        alert("Post deleted");
+    }
+
+    function filterPosts() {
+        const term = document.getElementById("search-input").value.toLowerCase().trim();
+        const tbody = document.querySelector("#posts-table tbody");
+        tbody.innerHTML = "";
+        allPosts.filter(p => p.title.toLowerCase().includes(term)).forEach(post => {
+            tbody.innerHTML += `
+                <tr>
+                    <td><strong>${post.title || ''}</strong></td>
+                    <td>${post.date || ''}</td>
+                    <td>${post.tags ? post.tags.join(", ") : ''}</td>
+                    <td>
+                        <button onclick="editPost('${post.id}')" class="btn btn-sm btn-outline-primary me-1">Edit</button>
+                        <button onclick="deletePost('${post.id}')" class="btn btn-sm btn-outline-danger">Delete</button>
+                        <a href="/blog-single.html?slug=${post.slug}" target="_blank" class="btn btn-sm btn-outline-secondary ms-1">View</a>
+                    </td>
+                </tr>`;
+        });
+    }
+
+    // ====================== CLIENTS SECTION ======================
+    function loadClients() {
+        const tbody = document.querySelector("#clients-table tbody");
+        const q = query(collection(db, "clientProfiles"));
+
+        onSnapshot(q, (snapshot) => {
+            allClients = [];
+            tbody.innerHTML = "";
+            snapshot.forEach(docSnap => {
+                const profile = docSnap.data();
+                const displayName = profile.fullName || docSnap.id;
+                const isSuspended = profile.suspended === true;
+
+                allClients.push({ id: docSnap.id, name: displayName, suspended: isSuspended });
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${displayName}</td>
+                        <td>
+                            <span class="badge ${isSuspended ? 'badge-suspended bg-danger' : 'bg-success'}">
+                                ${isSuspended ? 'Suspended' : 'Active'}
+                            </span>
+                        </td>
+                        <td>
+                            <button onclick="openProfileModal('${docSnap.id}')" class="btn btn-sm btn-outline-primary me-1">View Profile</button>
+                            <button onclick="openAssignModal('${docSnap.id}')" class="btn btn-sm btn-outline-success me-1">Assign Content</button>
+                            <button onclick="openChatModal('${docSnap.id}')" class="btn btn-sm btn-outline-info">Chat</button>
+                        </td>
+                        <td>
+                            <button onclick="toggleSuspend('${docSnap.id}', ${isSuspended})" 
+                                    class="btn btn-sm ${isSuspended ? 'btn-warning' : 'btn-secondary'} me-1">
+                                ${isSuspended ? 'Unsuspend' : 'Suspend'}
+                            </button>
+                        </td>
+                    </tr>`;
+            });
+        });
+    }
+
+    // ====================== PROFILE & SUSPEND ======================
+    async function openProfileModal(userId) {
+        const profileSnap = await getDoc(doc(db, "clientProfiles", userId));
+        const profile = profileSnap.exists() ? profileSnap.data() : {};
+
+        let html = `
+            <h5>Client Information</h5>
+            <p><strong>UID:</strong> <code>${userId}</code> <button onclick="copyToClipboard('${userId}')" class="btn btn-sm btn-outline-secondary ms-2">Copy UID</button></p>
+            <hr>
+            <p><strong>Name:</strong> ${profile.fullName || 'Not set'}</p>
+            <p><strong>Height:</strong> ${profile.height || '-'} cm</p>
+            <p><strong>Weight:</strong> ${profile.weight || '-'} kg</p>
+            <p><strong>Age:</strong> ${profile.age || '-'}</p>
+            <p><strong>Gender:</strong> ${profile.gender || '-'}</p>
+            <p><strong>Goals:</strong> ${profile.goals || 'Not specified'}</p>
+            <p><strong>Health Issues:</strong> ${profile.healthIssues || 'None'}</p>
+            <p><strong>Dietary:</strong> ${profile.dietary || 'None'}</p>
+            <p><strong>Status:</strong> <span class="badge ${profile.suspended ? 'bg-danger' : 'bg-success'}">${profile.suspended ? 'Suspended' : 'Active'}</span></p>
+        `;
+
+        document.getElementById("profile-modal-body").innerHTML = html;
+        new bootstrap.Modal(document.getElementById("profileModal")).show();
+    }
+
+    async function toggleSuspend(userId, currentlySuspended) {
+        const newStatus = !currentlySuspended;
+        if (!confirm(`Are you sure you want to ${newStatus ? 'suspend' : 'unsuspend'} this client?`)) return;
+
+        try {
+            await updateDoc(doc(db, "clientProfiles", userId), { suspended: newStatus });
+            alert(`Client has been ${newStatus ? 'suspended' : 'unsuspended'}.\n\nNote: Already logged-in users may stay active up to 60 minutes.`);
+        } catch (e) {
+            alert("Error: " + e.message);
+        }
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => alert("UID copied!"));
+    }
+
+    // ====================== ASSIGN CONTENT ======================
+    async function openAssignModal(userId) {
+        currentClientId = userId;
+        currentEditingContentId = null;
+        document.getElementById("content-form").reset();
+        document.getElementById("assign-modal-title").textContent = "Assign Personalized Content";
+        new bootstrap.Modal(document.getElementById("assignModal")).show();
+    }
+
+    async function viewAssignedContentList() {
+        if (!currentClientId) return;
+        const container = document.getElementById("assigned-list-body");
+        container.innerHTML = "Loading...";
+
+        const q = query(collection(db, "personalizedContent"), where("clientId", "==", currentClientId));
+        const snapshot = await getDocs(q);
+
+        if (snapshot.empty) {
+            container.innerHTML = "<p class='text-muted'>No content assigned yet.</p>";
+            new bootstrap.Modal(document.getElementById("assignedListModal")).show();
+            return;
+        }
+
+        let html = '<div class="row g-3">';
+        snapshot.forEach(docSnap => {
+            const item = docSnap.data();
+            const isImage = item.mediaUrl && /\.(jpg|jpeg|png|gif|webp)$/i.test(item.mediaUrl);
+
+            html += `
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h6>${item.title}</h6>
+                            <p class="small">${item.description || ''}</p>
+                            ${isImage ? 
+                                `<img src="${item.mediaUrl}" class="img-fluid rounded mb-2" style="max-height:180px; object-fit:contain; cursor:pointer;" onclick="zoomImage('${item.mediaUrl}')">` : 
+                                item.mediaUrl ? 
+                                `<div class="ratio ratio-16x9 mb-2"><iframe src="${convertYouTubeUrl(item.mediaUrl)}" allowfullscreen></iframe></div>` : ''}
+                            <p class="small">${item.content || ''}</p>
+                        </div>
+                        <div class="card-footer">
+                            <button onclick="editAssignedContent('${docSnap.id}'); bootstrap.Modal.getInstance(document.getElementById('assignedListModal')).hide();" class="btn btn-sm btn-primary me-2">Edit</button>
+                            <button onclick="deleteAssignedContent('${docSnap.id}')" class="btn btn-sm btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>`;
+        });
+        html += '</div>';
+        container.innerHTML = html;
+        new bootstrap.Modal(document.getElementById("assignedListModal")).show();
+    }
+
+    async function saveAssignedContent() {
+        if (!currentClientId) return alert("No client selected");
+
+        const contentData = {
+            clientId: currentClientId,
+            title: document.getElementById("content-title").value.trim(),
+            description: document.getElementById("content-desc").value.trim(),
+            mediaUrl: document.getElementById("media-url").value.trim(),
+            content: document.getElementById("content-text").value.trim(),
+            assignedAt: new Date().toISOString()
+        };
+
+        if (!contentData.title) return alert("Title is required");
+
+        try {
+            if (currentEditingContentId) {
+                await updateDoc(doc(db, "personalizedContent", currentEditingContentId), contentData);
+                alert("Updated successfully!");
+            } else {
+                await addDoc(collection(db, "personalizedContent"), contentData);
+                alert("Assigned successfully!");
+            }
+
+            document.getElementById("content-form").reset();
+            currentEditingContentId = null;
+        } catch (e) {
+            alert("Failed: " + e.message);
+        }
+    }
+
+    async function editAssignedContent(contentId) {
+        currentEditingContentId = contentId;
+        const docSnap = await getDoc(doc(db, "personalizedContent", contentId));
+        if (!docSnap.exists()) return;
+
+        const c = docSnap.data();
+        document.getElementById("content-title").value = c.title || "";
+        document.getElementById("content-desc").value = c.description || "";
+        document.getElementById("media-url").value = c.mediaUrl || "";
+        document.getElementById("content-text").value = c.content || "";
+    }
+
+    async function deleteAssignedContent(contentId) {
+        if (!confirm("Delete this content?")) return;
+        try {
+            await deleteDoc(doc(db, "personalizedContent", contentId));
+            alert("Deleted.");
+            // Refresh list if open
+            if (document.getElementById("assignedListModal").classList.contains('show')) {
+                viewAssignedContentList();
+            }
+        } catch (e) {
+            alert("Delete failed");
+        }
+    }
+
+    function zoomImage(url) {
+        const modalHTML = `
+            <div class="modal fade" id="imageZoomModal" tabindex="-1">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                        <div class="modal-body text-center p-0">
+                            <img src="${url}" style="max-width:100%; max-height:90vh; object-fit:contain;">
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        new bootstrap.Modal(document.getElementById("imageZoomModal")).show();
+        document.getElementById("imageZoomModal").addEventListener('hidden.bs.modal', () => this.remove());
+    }
+
+    function convertYouTubeUrl(url) {
+        if (!url) return "";
+        if (url.includes("youtu.be")) return `https://www.youtube.com/embed/${url.split("youtu.be/")[1].split("?")[0]}`;
+        if (url.includes("youtube.com/watch")) {
+            const v = new URL(url).searchParams.get("v");
+            return `https://www.youtube.com/embed/${v}`;
+        }
+        return url;
+    }
+
+    // ====================== CHAT ======================
+    async function openChatModal(userId) {
+        currentClientId = userId;
+        const profileSnap = await getDoc(doc(db, "clientProfiles", userId));
+        const profile = profileSnap.exists() ? profileSnap.data() : {};
+
+        document.getElementById("chat-modal-title").textContent = `Chat with ${profile.fullName || userId}`;
+        loadClientMessages(userId);
+        new bootstrap.Modal(document.getElementById("chatModal")).show();
+    }
+
+    let currentMessagesUnsubscribe = null;
+
+    function loadClientMessages(userId) {
+        const container = document.getElementById("chat-messages");
+        container.innerHTML = "Loading...";
+
+        if (currentMessagesUnsubscribe) currentMessagesUnsubscribe();
+
+        const q = query(collection(db, "messages"), where("clientId", "==", userId), orderBy("timestamp", "asc"));
+
+        currentMessagesUnsubscribe = onSnapshot(q, (snapshot) => {
+            container.innerHTML = "";
+            if (snapshot.empty) {
+                container.innerHTML = "<p class='text-muted text-center'>No messages yet.</p>";
+                return;
+            }
+            snapshot.forEach(docSnap => {
+                const msg = docSnap.data();
+                const isFromClient = msg.from === "client";
+                const div = document.createElement("div");
+                div.className = `mb-3 ${isFromClient ? 'text-start' : 'text-end'}`;
+                div.innerHTML = `
+                    <div class="${isFromClient ? 'bg-light' : 'bg-danger text-white'} p-3 rounded-3 d-inline-block" style="max-width: 75%;">
+                        <small>${isFromClient ? (msg.clientEmail || 'Client') : 'You'}</small><br>
+                        ${msg.message}
+                        <br><small class="opacity-50">${new Date(msg.timestamp).toLocaleString()}</small>
+                    </div>`;
+                container.appendChild(div);
+            });
+            container.scrollTop = container.scrollHeight;
+        });
+    }
+
+    async function sendReply() {
+        const text = document.getElementById("admin-reply").value.trim();
+        if (!text || !currentClientId) return alert("Reply cannot be empty");
+
+        try {
+            await addDoc(collection(db, "messages"), {
+                clientId: currentClientId,
+                clientEmail: "Admin",
+                message: text,
+                from: "admin",
+                timestamp: new Date().toISOString(),
+                read: false
+            });
+            document.getElementById("admin-reply").value = "";
+        } catch (e) {
+            alert("Failed to send");
+        }
+    }
+
+    function showSection(section) {
+        document.getElementById("blog-section").style.display = section === 'blog' ? 'block' : 'none';
+        document.getElementById("clients-section").style.display = section === 'clients' ? 'block' : 'none';
+    }
+
+    function filterClients() {
+        const term = document.getElementById("client-search").value.toLowerCase().trim();
+        const tbody = document.querySelector("#clients-table tbody");
+        tbody.innerHTML = "";
+        allClients.filter(c => (c.name || c.id).toLowerCase().includes(term)).forEach(c => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${c.name}</td>
+                    <td><span class="badge bg-success">Complete</span></td>
+                    <td>
+                        <button onclick="openProfileModal('${c.id}')" class="btn btn-sm btn-outline-primary me-1">View Profile</button>
+                        <button onclick="openAssignModal('${c.id}')" class="btn btn-sm btn-outline-success me-1">Assign Content</button>
+                        <button onclick="openChatModal('${c.id}')" class="btn btn-sm btn-outline-info">Chat</button>
+                    </td>
+                </tr>`;
+        });
+    }
+
+    function logout() {
+        signOut(auth).then(() => window.location.href = "/login2/login.html");
+    }
+
+    // Global functions
+    window.showSection = showSection;
+    window.newPost = newPost;
+    window.savePost = savePost;
+    window.editPost = editPost;
+    window.deletePost = deletePost;
+    window.filterPosts = filterPosts;
+    window.openProfileModal = openProfileModal;
+    window.openAssignModal = openAssignModal;
+    window.openChatModal = openChatModal;
+    window.sendReply = sendReply;
+    window.toggleSuspend = toggleSuspend;
+    window.copyToClipboard = copyToClipboard;
+    window.saveAssignedContent = saveAssignedContent;
+    window.editAssignedContent = editAssignedContent;
+    window.deleteAssignedContent = deleteAssignedContent;
+    window.viewAssignedContentList = viewAssignedContentList;
+    window.zoomImage = zoomImage;
+
+    window.onload = () => {};
+
+    document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            document.querySelector('.sidebar .nav-link.active')?.classList.remove('active');
+            this.classList.add('active');
+        });
+    });
+
+
+    // Allow Enter to send reply in admin chat
+    document.addEventListener('DOMContentLoaded', () => {
+        const replyTextarea = document.getElementById("admin-reply");
+        if (replyTextarea) {
+            replyTextarea.addEventListener("keypress", function(e) {
+                if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    sendReply();
+                }
+            });
+        }
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+</body>
+</html>
