@@ -99,5 +99,5 @@ window.logout = function () {
 
 // Login redirect
 window.login = function () {
-    window.location.href = "/login2/login.html";
+    window.location.href = "/auth/login.html";
 };

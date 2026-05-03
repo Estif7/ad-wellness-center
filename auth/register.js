@@ -34,7 +34,7 @@
         // Signed up 
         const user = userCredential.user;
         alert('User registered successfully!');
-        window.location.href = "/login.html"; 
+        window.location.href = "login.html"; 
         // ...
       })
       .catch((error) => {

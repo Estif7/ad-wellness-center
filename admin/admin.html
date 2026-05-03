@@ -228,7 +228,7 @@
     let allClients = [];
 
     onAuthStateChanged(auth, async (user) => {
-        if (!user) return window.location.href = "/login2/login.html";
+        if (!user) return window.location.href = "/auth/login.html";
 
         const token = await user.getIdTokenResult();
         if (!token.claims.admin) {
@@ -667,7 +667,7 @@
     }
 
     function logout() {
-        signOut(auth).then(() => window.location.href = "/login2/login.html");
+        signOut(auth).then(() => window.location.href = "/auth/login.html");
     }
 
     // Global functions
