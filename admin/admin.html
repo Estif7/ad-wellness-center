@@ -29,6 +29,7 @@
             <li class="nav-item"><a href="/index.html" class="nav-link">🏠 Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link active" onclick="showSection('clients')">👥 Clients</a></li>
             <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('blog')">📝 Blog Posts</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('contacts')">📞 Contacts</a></li>
             <li class="nav-item mt-3"><a href="#" onclick="logout()" class="nav-link text-danger">🚪 Logout</a></li>
         </ul>
     </div>
@@ -71,6 +72,30 @@
 
             <table class="table table-hover align-middle" id="posts-table">
                 <thead><tr><th>Title</th><th>Date</th><th>Tags</th><th>Actions</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Contacts Section -->
+        <div id="contacts-section" style="display: none;">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Contact Messages</h2>
+                <span id="user-email-contacts" class="fw-bold"></span>
+            </div>
+
+            <input type="text" id="contact-search" class="form-control mb-3" placeholder="Search contacts..." onkeyup="filterContacts()">
+
+            <table class="table table-hover" id="contacts-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody></tbody>
             </table>
         </div>
@@ -239,9 +264,11 @@
 
         document.getElementById("user-email").textContent = `👤 ${user.email}`;
         document.getElementById("user-email-clients").textContent = `👤 ${user.email}`;
+        document.getElementById("user-email-contacts").textContent = `👤 ${user.email}`;
 
         loadPosts();
         loadClients();
+        loadContacts();
     });
 
     // ====================== BLOG SECTION ======================
@@ -646,6 +673,7 @@
     function showSection(section) {
         document.getElementById("blog-section").style.display = section === 'blog' ? 'block' : 'none';
         document.getElementById("clients-section").style.display = section === 'clients' ? 'block' : 'none';
+        document.getElementById("contacts-section").style.display = section === 'contacts' ? 'block' : 'none';
     }
 
     function filterClients() {
@@ -661,6 +689,91 @@
                         <button onclick="openProfileModal('${c.id}')" class="btn btn-sm btn-outline-primary me-1">View Profile</button>
                         <button onclick="openAssignModal('${c.id}')" class="btn btn-sm btn-outline-success me-1">Assign Content</button>
                         <button onclick="openChatModal('${c.id}')" class="btn btn-sm btn-outline-info">Chat</button>
+                    </td>
+                </tr>`;
+        });
+    }
+
+    // ====================== CONTACTS SECTION ======================
+    let allContacts = [];
+
+    function loadContacts() {
+        const tbody = document.querySelector("#contacts-table tbody");
+        if (!tbody) return console.error("Contacts table not found");
+
+        tbody.innerHTML = "<tr><td colspan='6' class='text-center'>Loading contacts...</td></tr>";
+
+        const q = query(collection(db, "contacts"), orderBy("timestamp", "desc"));
+
+        onSnapshot(q, (snapshot) => {
+            allContacts = [];
+            tbody.innerHTML = "";
+
+            if (snapshot.empty) {
+                tbody.innerHTML = `<tr><td colspan='6' class='text-center text-muted'>No contact messages yet.</td></tr>`;
+                return;
+            }
+
+            snapshot.forEach(docSnap => {
+                const contact = { id: docSnap.id, ...docSnap.data() };
+                allContacts.push(contact);
+
+                const name = `${contact.firstName || ''} ${contact.lastName || ''}`.trim() || 'Anonymous';
+                const date = contact.timestamp ? new Date(contact.timestamp.seconds * 1000).toLocaleString() : 'N/A';
+                const shortMsg = contact.message ? contact.message.substring(0, 60) + (contact.message.length > 60 ? '...' : '') : '';
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${name}</td>
+                        <td><a href="mailto:${contact.email}">${contact.email}</a></td>
+                        <td>${contact.phone || '-'}</td>
+                        <td>${shortMsg}</td>
+                        <td>${date}</td>
+                        <td>
+                            <button onclick="deleteContact('${contact.id}')" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </td>
+                    </tr>`;
+            });
+        }, (error) => {
+            console.error("Contacts load error:", error);
+            tbody.innerHTML = `<tr><td colspan='6' class='text-center text-danger'>Error loading contacts. Check console.</td></tr>`;
+        });
+    }
+
+    async function deleteContact(id) {
+        if (!confirm("Delete this contact message?")) return;
+        try {
+            await deleteDoc(doc(db, "contacts", id));
+            alert("Deleted successfully");
+        } catch (e) {
+            console.error(e);
+            alert("Delete failed: " + e.message);
+        }
+    }
+
+    function filterContacts() {
+        const term = (document.getElementById("contact-search").value || "").toLowerCase().trim();
+        const tbody = document.querySelector("#contacts-table tbody");
+        tbody.innerHTML = "";
+
+        allContacts.filter(c => 
+            `${c.firstName || ''} ${c.lastName || ''}`.toLowerCase().includes(term) ||
+            (c.email || '').toLowerCase().includes(term) ||
+            (c.message || '').toLowerCase().includes(term)
+        ).forEach(contact => {
+            const name = `${contact.firstName || ''} ${contact.lastName || ''}`.trim() || 'Anonymous';
+            const date = contact.timestamp ? new Date(contact.timestamp.seconds * 1000).toLocaleString() : 'N/A';
+            const shortMsg = contact.message ? contact.message.substring(0, 60) + (contact.message.length > 60 ? '...' : '') : '';
+
+            tbody.innerHTML += `
+                <tr>
+                    <td>${name}</td>
+                    <td><a href="mailto:${contact.email}">${contact.email}</a></td>
+                    <td>${contact.phone || '-'}</td>
+                    <td>${shortMsg}</td>
+                    <td>${date}</td>
+                    <td>
+                        <button onclick="deleteContact('${contact.id}')" class="btn btn-sm btn-outline-danger">Delete</button>
                     </td>
                 </tr>`;
         });
@@ -688,6 +801,8 @@
     window.deleteAssignedContent = deleteAssignedContent;
     window.viewAssignedContentList = viewAssignedContentList;
     window.zoomImage = zoomImage;
+    window.filterContacts = filterContacts;
+    window.deleteContact = deleteContact;
 
     window.onload = () => {};
 
