@@ -18,10 +18,10 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 function getOrCreateAboutMenuItem() {
-    let aboutMenuItem = document.querySelector('a.nav-link[href="about.html"]')?.closest('li.nav-item');
+    let aboutMenuItem = document.querySelector('a.nav-link[href*="/about"]')?.closest('li.nav-item');
     
     if (!aboutMenuItem) {
-        const profileMenuItem = document.querySelector('a.nav-link[href="profile.html"]')?.closest('li.nav-item');
+        const profileMenuItem = document.querySelector('a.nav-link[href*="/profile"]')?.closest('li.nav-item');
         if (profileMenuItem && profileMenuItem.parentNode) {
             aboutMenuItem = document.createElement('li');
             aboutMenuItem.className = 'nav-item';
@@ -34,17 +34,10 @@ function getOrCreateAboutMenuItem() {
 }
 
 function updateMainMenu(isLoggedIn) {
-    const profileMenuItem = document.querySelector('a.nav-link[href="profile.html"]')?.closest('li.nav-item');
-    const dashboardMenuItem = document.querySelector('a.nav-link[href="dashboard.html"]')?.closest('li.nav-item');
+    const profileMenuItem = document.querySelector('a.nav-link[href*="/profile"]')?.closest('li.nav-item');
+    const dashboardMenuItem = document.querySelector('a.nav-link[href*="/dashboard"]')?.closest('li.nav-item');
     const aboutMenuItem = getOrCreateAboutMenuItem();
 
-    // Debug: inspect actual DOM structure
-    console.log('=== DOM INSPECTION ===');
-    console.log('All .nav-link elements:', document.querySelectorAll('.nav-link').length);
-    document.querySelectorAll('.nav-link').forEach((link, idx) => {
-        console.log(`  [${idx}]`, link.href, link.textContent);
-    });
-    console.log('Menu container (#menu):', document.getElementById('menu'));
     console.log('updateMainMenu:', { isLoggedIn, profileMenuItem: !!profileMenuItem, dashboardMenuItem: !!dashboardMenuItem, aboutMenuItem: !!aboutMenuItem });
 
     if (profileMenuItem) profileMenuItem.style.display = isLoggedIn ? 'list-item' : 'none';
@@ -55,9 +48,9 @@ function updateMainMenu(isLoggedIn) {
 }
 
 function updateMobileMainMenu(isLoggedIn) {
-    const mobileProfileItem = document.querySelector('.slicknav_menu a[href="profile.html"]')?.closest('li');
-    const mobileDashboardItem = document.querySelector('.slicknav_menu a[href="dashboard.html"]')?.closest('li');
-    let mobileAboutItem = document.querySelector('.slicknav_menu a[href="about.html"]')?.closest('li');
+    const mobileProfileItem = document.querySelector('.slicknav_menu a[href*="/profile"]')?.closest('li');
+    const mobileDashboardItem = document.querySelector('.slicknav_menu a[href*="/dashboard"]')?.closest('li');
+    let mobileAboutItem = document.querySelector('.slicknav_menu a[href*="/about"]')?.closest('li');
 
     if (!mobileAboutItem && mobileProfileItem) {
         // Clone the structure from an existing item to match styling
