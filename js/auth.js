@@ -22,7 +22,7 @@ function getOrCreateAboutMenuItem() {
     
     if (!aboutMenuItem) {
         const profileMenuItem = document.querySelector('a.nav-link[href="profile.html"]')?.closest('li.nav-item');
-        if (profileMenuItem) {
+        if (profileMenuItem && profileMenuItem.parentNode) {
             aboutMenuItem = document.createElement('li');
             aboutMenuItem.className = 'nav-item';
             aboutMenuItem.innerHTML = '<a class="nav-link" href="about.html">About Us</a>';
@@ -37,6 +37,8 @@ function updateMainMenu(isLoggedIn) {
     const profileMenuItem = document.querySelector('a.nav-link[href="profile.html"]')?.closest('li.nav-item');
     const dashboardMenuItem = document.querySelector('a.nav-link[href="dashboard.html"]')?.closest('li.nav-item');
     const aboutMenuItem = getOrCreateAboutMenuItem();
+
+    console.log('updateMainMenu:', { isLoggedIn, profileMenuItem: !!profileMenuItem, dashboardMenuItem: !!dashboardMenuItem, aboutMenuItem: !!aboutMenuItem });
 
     if (profileMenuItem) profileMenuItem.style.display = isLoggedIn ? 'list-item' : 'none';
     if (dashboardMenuItem) dashboardMenuItem.style.display = isLoggedIn ? 'list-item' : 'none';
