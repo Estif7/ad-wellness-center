@@ -17,21 +17,26 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const profileMenuItem = document.querySelector('a.nav-link[href="profile.html"]')?.closest('li.nav-item');
-const dashboardMenuItem = document.querySelector('a.nav-link[href="dashboard.html"]')?.closest('li.nav-item');
-let aboutMenuItem = document.querySelector('a.nav-link[href="about.html"]')?.closest('li.nav-item');
-
-function ensureAboutMenuItem() {
-    if (!aboutMenuItem && profileMenuItem) {
-        aboutMenuItem = document.createElement('li');
-        aboutMenuItem.className = 'nav-item';
-        aboutMenuItem.innerHTML = '<a class="nav-link" href="about.html">About Us</a>';
-        profileMenuItem.parentNode.insertBefore(aboutMenuItem, profileMenuItem);
+function getOrCreateAboutMenuItem() {
+    let aboutMenuItem = document.querySelector('a.nav-link[href="about.html"]')?.closest('li.nav-item');
+    
+    if (!aboutMenuItem) {
+        const profileMenuItem = document.querySelector('a.nav-link[href="profile.html"]')?.closest('li.nav-item');
+        if (profileMenuItem) {
+            aboutMenuItem = document.createElement('li');
+            aboutMenuItem.className = 'nav-item';
+            aboutMenuItem.innerHTML = '<a class="nav-link" href="about.html">About Us</a>';
+            profileMenuItem.parentNode.insertBefore(aboutMenuItem, profileMenuItem);
+        }
     }
+    
+    return aboutMenuItem;
 }
 
 function updateMainMenu(isLoggedIn) {
-    if (!aboutMenuItem) ensureAboutMenuItem();
+    const profileMenuItem = document.querySelector('a.nav-link[href="profile.html"]')?.closest('li.nav-item');
+    const dashboardMenuItem = document.querySelector('a.nav-link[href="dashboard.html"]')?.closest('li.nav-item');
+    const aboutMenuItem = getOrCreateAboutMenuItem();
 
     if (profileMenuItem) profileMenuItem.style.display = isLoggedIn ? 'list-item' : 'none';
     if (dashboardMenuItem) dashboardMenuItem.style.display = isLoggedIn ? 'list-item' : 'none';
@@ -45,15 +50,12 @@ function updateMobileMainMenu(isLoggedIn) {
     const mobileDashboardItem = document.querySelector('.slicknav_menu a[href="dashboard.html"]')?.closest('li');
     let mobileAboutItem = document.querySelector('.slicknav_menu a[href="about.html"]')?.closest('li');
 
-    if (!mobileAboutItem) {
-        const mobileNav = document.querySelector('.slicknav_menu ul');
-        if (mobileNav && mobileProfileItem) {
-            // Clone the structure from an existing item to match styling
-            mobileAboutItem = mobileProfileItem.cloneNode(true);
-            mobileAboutItem.querySelector('a').href = 'about.html';
-            mobileAboutItem.querySelector('a').textContent = 'About Us';
-            mobileProfileItem.parentNode.insertBefore(mobileAboutItem, mobileProfileItem);
-        }
+    if (!mobileAboutItem && mobileProfileItem) {
+        // Clone the structure from an existing item to match styling
+        mobileAboutItem = mobileProfileItem.cloneNode(true);
+        mobileAboutItem.querySelector('a').href = 'about.html';
+        mobileAboutItem.querySelector('a').textContent = 'About Us';
+        mobileProfileItem.parentNode.insertBefore(mobileAboutItem, mobileProfileItem);
     }
 
     if (mobileProfileItem) mobileProfileItem.style.display = isLoggedIn ? 'list-item' : 'none';
@@ -61,7 +63,6 @@ function updateMobileMainMenu(isLoggedIn) {
     if (mobileAboutItem) mobileAboutItem.style.display = isLoggedIn ? 'none' : 'list-item';
 }
 
-updateMainMenu(false);
 
 onAuthStateChanged(auth, async (user) => {
     const loginBtn = document.getElementById("login-btn");
