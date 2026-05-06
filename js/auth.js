@@ -38,6 +38,13 @@ function updateMainMenu(isLoggedIn) {
     const dashboardMenuItem = document.querySelector('a.nav-link[href="dashboard.html"]')?.closest('li.nav-item');
     const aboutMenuItem = getOrCreateAboutMenuItem();
 
+    // Debug: inspect actual DOM structure
+    console.log('=== DOM INSPECTION ===');
+    console.log('All .nav-link elements:', document.querySelectorAll('.nav-link').length);
+    document.querySelectorAll('.nav-link').forEach((link, idx) => {
+        console.log(`  [${idx}]`, link.href, link.textContent);
+    });
+    console.log('Menu container (#menu):', document.getElementById('menu'));
     console.log('updateMainMenu:', { isLoggedIn, profileMenuItem: !!profileMenuItem, dashboardMenuItem: !!dashboardMenuItem, aboutMenuItem: !!aboutMenuItem });
 
     if (profileMenuItem) profileMenuItem.style.display = isLoggedIn ? 'list-item' : 'none';
