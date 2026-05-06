@@ -377,12 +377,48 @@
 
 	/* Popup Video */
 	if ($('.popup-video').length) {
-		$('.popup-video').magnificPopup({
-			type: 'iframe',
-			mainClass: 'mfp-fade',
-			removalDelay: 160,
-			preloader: false,
-			fixedContentPos: true
+		if ($('#popup-video-overlay').length === 0) {
+			$('body').append(
+				'<style id="popup-video-style">' +
+					'#popup-video-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:20px;}' +
+					'#popup-video-overlay .popup-video-box{position:relative;width:100%;max-width:960px;max-height:90vh;}' +
+					'#popup-video-overlay .popup-video-close{position:absolute;top:-12px;right:-12px;width:36px;height:36px;border:none;border-radius:50%;background:#fff;color:#000;font-size:24px;cursor:pointer;line-height:1;text-align:center;}' +
+					'#popup-video-overlay video{width:100%;height:auto;display:block;}' +
+				'</style>' +
+				'<div id="popup-video-overlay">' +
+					'<div class="popup-video-box">' +
+						'<button type="button" class="popup-video-close" aria-label="Close video">&times;</button>' +
+						'<video id="popupVideoPlayer" controls autoplay playsinline></video>' +
+					'</div>' +
+				'</div>'
+			);
+		}
+
+		var $popupVideoOverlay = $('#popup-video-overlay');
+		var $popupVideoPlayer = $('#popupVideoPlayer');
+
+		function closePopupVideo() {
+			$popupVideoPlayer[0].pause();
+			$popupVideoPlayer.attr('src', '');
+			$popupVideoOverlay.fadeOut(160);
+		}
+
+		$('.popup-video').on('click', function (e) {
+			e.preventDefault();
+			var videoSrc = $(this).attr('href');
+			if (!videoSrc) {
+				return;
+			}
+			$popupVideoPlayer.attr('src', videoSrc);
+			$popupVideoPlayer[0].load();
+			$popupVideoOverlay.css('display', 'flex').fadeIn(160);
+			$popupVideoPlayer[0].play().catch(function () {});
+		});
+
+		$popupVideoOverlay.on('click', function (e) {
+			if ($(e.target).is('#popup-video-overlay') || $(e.target).hasClass('popup-video-close')) {
+				closePopupVideo();
+			}
 		});
 	}
 
