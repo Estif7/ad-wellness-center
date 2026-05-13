@@ -73,24 +73,37 @@
                     <div class="collapse navbar-collapse main-menu">
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto" id="menu">
-                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="profile.html">My Profile</a></li>
-                                <li class="nav-item"><a class="nav-link" href="dashboard.html">My Dashboard</a></li>
-                                <li class="nav-item"><a class="nav-link" href="packages.html">Packages</a></li>
-                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="index.html" data-en="Home" data-am="መነሻ">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="profile.html" data-en="My Profile" data-am="የእኔ መግለጫ">My Profile</a></li>
+                                <li class="nav-item"><a class="nav-link" href="dashboard.html" data-en="My Dashboard" data-am="ዳሽቦርድ">My Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link" href="packages.html" data-en="Packages" data-am="ፓኬጆች">Packages</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact.html" data-en="Contact Us" data-am="ያግኙን">Contact Us</a></li>
                             </ul>
                         </div>
                         
                         <!-- Header Btn Start -->
-                        <div class="header-btn">
-                            <button id="login-btn" onclick="login()" class="btn-default">Login</button>
-                            <button id="logout-btn" onclick="logout()" class="btn-default" style="display:none;">Logout</button>
+                        <div class="header-btn d-flex align-items-center gap-2">
+                            <button id="login-btn" onclick="login()" class="btn-default" data-en="Login" data-am="ግባ">Login</button>
+                            <button id="logout-btn" onclick="logout()" class="btn-default" style="display:none;" data-en="Logout" data-am="ውጣ">Logout</button>
                             <div id="user-info" style="display:inline-block; margin-left:10px; color: white; font-weight: 500;"></div>
+                            
+                            <!-- Desktop Language Switcher -->
+                            <div class="language-switcher d-none d-lg-flex">
+                                <button id="lang-en" onclick="switchLanguage('en')" class="btn btn-sm btn-outline-light active">EN</button>
+                                <button id="lang-am" onclick="switchLanguage('am')" class="btn btn-sm btn-outline-light">አማ</button>
+                            </div>
                         </div>
-                        <!-- Header Btn End -->
                     </div>
 					<!-- Main Menu End -->
-					<div class="navbar-toggle"></div>
+
+                    <!-- Mobile Language + Toggle -->
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="language-switcher d-lg-none">
+                            <button id="lang-en-mobile" onclick="switchLanguage('en')" class="btn btn-sm btn-outline-light active">EN</button>
+                            <button id="lang-am-mobile" onclick="switchLanguage('am')" class="btn btn-sm btn-outline-light">አማ</button>
+                        </div>
+                        <div class="navbar-toggle"></div>
+                    </div>
 				</div>
 			</nav>
 			<div class="responsive-menu"></div>
@@ -103,18 +116,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Page Header Box Start -->
                     <div class="page-header-box">
-                        <h1 class="text-anime-style-3" data-cursor="-opaque">Program Details</h1>
-                        <!-- <nav class="wow fadeInUp">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">home</a></li>
-                                <li class="breadcrumb-item"><a href="programs.html">Programs</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Strength Training</li>
-                            </ol>
-                        </nav> -->
+                        <h1 class="text-anime-style-3" data-cursor="-opaque" 
+                            data-en="Program Details" 
+                            data-am="የፕሮግራም ዝርዝሮች">Program Details</h1>
                     </div>
-                    <!-- Page Header Box End -->
                 </div>
             </div>
         </div>
@@ -124,44 +130,49 @@
     <!-- Page Program Single Start -->
     <div class="page-program-single">
         <div class="container">
+            
             <!-- Program Single Content Start -->
             <div class="program-single-content">
-                <!-- Page Single image Start -->
-                <!-- <div class="page-single-image">
-                    <figure class="image-anime reveal">
-                        <img src="images/program-image-2.jpg" alt="Program overview">
-                    </figure>
-                </div> -->
-                <!-- Page Single image End -->
-                
-                <!-- Program Entry Start -->
+                <!-- Program Entry / Introduction Start -->
                 <div class="program-entry">
-                    <p class="wow fadeInUp">Welcome to AD Wellness Center. Explore each training program below to find the right path for your fitness goals, whether you want weight loss, performance improvement, body composition changes, or specialized coaching.</p>
-                    <p class="wow fadeInUp" data-wow-delay="0.2s">Each program is designed by expert trainers and nutrition specialists to support safe progression, better movement quality, and sustainable results. Click a program name in the sidebar to jump directly to its detailed section.</p>
+                    <p class="wow fadeInUp" 
+                       data-en="Welcome to AD Wellness Center. Explore each training program below to find the right path for your fitness goals, whether you want weight loss, performance improvement, body composition changes, or specialized coaching." 
+                       data-am="እንኳን ወደ AD Wellness Center በደህና መጡ። ለአካል ብቃት ግቦችህ ትክክለኛውን መንገድ ለማግኘት ከታች ያሉትን ስልጠና ፕሮግራሞች ያስሱ።">
+                       Welcome to AD Wellness Center. Explore each training program below to find the right path for your fitness goals...
+                    </p>
+                    <p class="wow fadeInUp" data-wow-delay="0.2s" 
+                       data-en="Each program is designed by expert trainers and nutrition specialists to support safe progression, better movement quality, and sustainable results. Click a program name in the sidebar to jump directly to its detailed section." 
+                       data-am="እያንዳንዱ ፕሮግራም በባለሙያ አሰልጣኞች እና የአመጋገብ ባለሙያዎች የተዘጋጀ ሲሆን ደህንነቱ የተጠበቀ ሂደት፣ የተሻለ እንቅስቃሴ እና ዘላቂ ውጤት ያበረክታል።">
+                       Each program is designed by expert trainers and nutrition specialists...
+                    </p>
                 </div>
+                <!-- Program Entry End -->
             </div>
-            <!-- Program Entry End -->
+            <!-- Program Single Content End -->
+
             <div class="row">
+                <!-- Sidebar Start -->
                 <div class="col-lg-4">
                     <!-- Page Single Sidebar Start -->
                     <div class="page-single-sidebar">
                         <!-- Page Category List Start -->
                         <div class="page-category-list wow fadeInUp">
-                            <h2 class="page-category-list-title">Explore Our Programs</h2>
+                            <h2 class="page-category-list-title" 
+                                data-en="Explore Our Programs" 
+                                data-am="የእኛን ፕሮግራሞች ያስሱ">Explore Our Programs</h2>
                             <ul>
-                                <!-- <li><a href="#" id="show-all-programs">Show All Programs</a></li> -->
-                                <li><a href="#weight-loss-program">Weight Loss Program</a></li>
-                                <li><a href="#body-composition">Body Composition</a></li>
-                                <li><a href="#athletic-performance">Athletic Performance</a></li>
-                                <li><a href="#bodybuilding-program">Bodybuilding Program</a></li>
-                                <li><a href="#posing-coaching">Posing Coaching</a></li>
-                                <li><a href="#home-workout-programs">Home Workout Programs</a></li>
-                                <li><a href="#nutrition-diet-planning">Nutrition & Diet Planning</a></li>
-                                <li><a href="#kids-fitness-program">Kids Fitness Program</a></li>
-                                <li><a href="#fifty-plus-fitness-program">50+ Fitness Program</a></li>
-                                <li><a href="#pre-postnatal-program">Pre & Postnatal Program</a></li>
-                                <li><a href="#joint-mobility-health-program">Joint & Mobility Health Program</a></li>
-                                <li><a href="#hormone-balance-training-program">Hormone Balance Training Program</a></li>
+                                <li><a href="#weight-loss-program" data-en="Weight Loss Program" data-am="የሰውነት ክብደት መቀነስ ፕሮግራም">Weight Loss Program</a></li>
+                                <li><a href="#body-composition" data-en="Body Composition" data-am="የሰውነት ቅንብር">Body Composition</a></li>
+                                <li><a href="#athletic-performance" data-en="Athletic Performance" data-am="የአትሌቲክስ አፈጻጸም">Athletic Performance</a></li>
+                                <li><a href="#bodybuilding-program" data-en="Bodybuilding Program" data-am="የጡንቻ ግንባታ ፕሮግራም">Bodybuilding Program</a></li>
+                                <li><a href="#posing-coaching" data-en="Posing Coaching" data-am="ፖዚንግ ማሰልጠኛ">Posing Coaching</a></li>
+                                <li><a href="#home-workout-programs" data-en="Home Workout Programs" data-am="የቤት ስልጠና ፕሮግራሞች">Home Workout Programs</a></li>
+                                <li><a href="#nutrition-diet-planning" data-en="Nutrition & Diet Planning" data-am="አመጋገብ እና አመጋገብ እቅድ">Nutrition & Diet Planning</a></li>
+                                <li><a href="#kids-fitness-program" data-en="Kids Fitness Program" data-am="የልጆች አካል ብቃት ፕሮግራም">Kids Fitness Program</a></li>
+                                <li><a href="#fifty-plus-fitness-program" data-en="50+ Fitness Program" data-am="50+ አካል ብቃት ፕሮግራም">50+ Fitness Program</a></li>
+                                <li><a href="#pre-postnatal-program" data-en="Pre & Postnatal Program" data-am="እርግዝና በፊትና በኋላ ፕሮግራም">Pre & Postnatal Program</a></li>
+                                <li><a href="#joint-mobility-health-program" data-en="Joint & Mobility Health Program" data-am="የመገጣጠሚያ ጤና እና ተገቢ እንቅስቃሴ">Joint & Mobility Health Program</a></li>
+                                <li><a href="#hormone-balance-training-program" data-en="Hormone Balance Training Program" data-am="የሆርሞን ሚዛን ስልጠና ፕሮግራም">Hormone Balance Training Program</a></li>
                             </ul>
                         </div>
                         <!-- Page Category List End -->
@@ -170,7 +181,7 @@
                         <div class="sidebar-cta-box wow fadeInUp" data-wow-delay="0.25s">
                             <div class="sidebar-cta-image">
                                 <figure>
-                                    <img src="images/sidebar-cta-image.jpg" alt="">
+                                    <img src="images/faqs-image-gold.jpg" alt="">
                                 </figure>
                             </div>
                             <div class="sidebar-cta-body">
@@ -178,11 +189,11 @@
                                     <img src="images/icon-headphone-primary.svg" alt="">
                                 </div>
                                 <div class="sidebar-cta-content">
-                                    <h2>Contact Us Today!</h2>
-                                    <p>Get in touch with AD Wellness Center to learn more about our training, memberships.</p>
-                                    <ul>
-                                        <li>Call Us At: <a href="tel:123456789">+(123) 456 - 789</a></li>
-                                    </ul>
+                                    <h2 data-en="Contact Us Today!" data-am="ዛሬ ያግኙን!">Contact Us Today!</h2>
+                                    <p data-en="Get in touch with AD Wellness Center to learn more about our training, memberships." 
+                                       data-am="ስለ ስልጠናችን እና አባልነት ተጨማሪ መረጃ ለማግኘት ከ AD Wellness Center ጋር ይገናኙ።">
+                                       Get in touch with AD Wellness Center to learn more about our training, memberships.
+                                    </p>
                                 </div>                
                             </div>
                         </div>
@@ -190,397 +201,422 @@
                     </div>
                     <!-- Page Single Sidebar End -->
                 </div>
+                <!-- Sidebar End -->
 
                 <div class="col-lg-8">
-                    
+                    <div class="program-details">
+                        <!-- ====================== WEIGHT LOSS ====================== -->
+                        <section id="weight-loss-program" class="program-section wow fadeInUp" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Weight Loss Program" data-am="የሰውነት ክብደት መቀነስ ፕሮግራም">Weight Loss Program</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/program-image-2.jpg" alt="Weight Loss Program">
+                                </figure>
+                            </div>
+                            <p data-en="Our Weight Loss Program combines targeted cardio, metabolic circuits, and nutrition coaching to help you shed fat while preserving lean muscle mass." 
+                            data-am="የእኛ የሰውነት ክብደት መቀነስ ፕሮግራም ስብን ለማጥፋት እና ቀጭን ጡንቻን ለመጠበቅ የታተመ ካርዲዮ፣ ሜታቦሊክ ሲርኩት እና የአመጋገብ ማሰልጠኛ ያጣምራል።">
+                            Our Weight Loss Program combines targeted cardio...
+                            </p>
+                            <p data-en="Participants will receive personalized meal plans, weekly progress tracking, and access to our expert trainers who provide ongoing support." 
+                            data-am="ተሳታፊዎች የተበጀ የምግብ እቅድ፣ ሳምንታዊ የእድገት ክትትል እና የባለሙያ አሰልጣኞቻችንን የቀጣይ ድጋፍ ያገኛሉ።">
+                            Participants will receive personalized meal plans...
+                            </p>
 
-                        <div class="program-details">
-                            <section id="weight-loss-program" class="program-section wow fadeInUp" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Weight Loss Program</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/program-image-2.jpg" alt="Weight Loss Program">
-                                    </figure>
-                                </div>
-                                <p>Our Weight Loss Program combines targeted cardio, metabolic circuits, and nutrition coaching to help you shed fat while preserving lean muscle mass. This comprehensive approach ensures sustainable results through a balanced mix of high-intensity interval training (HIIT), strength exercises, and dietary guidance tailored to your lifestyle.</p>
-                                <p>Participants will receive personalized meal plans, weekly progress tracking, and access to our expert trainers who provide ongoing support and adjustments to your routine. Whether you're looking to lose a few pounds or embark on a significant transformation, this program is designed to build healthy habits that last.</p>
-                                <div class="program-benefits-box">
-                                    <h3>What you'll get</h3>
-                                    <ul>
-                                        <li>Personalized calorie and meal planning with macro tracking</li>
-                                        <li>Fat-burning workouts with progressive intensity and variety</li>
-                                        <li>Body composition tracking, weekly check-ins, and motivation coaching</li>
-                                        <li>Access to group classes and one-on-one sessions</li>
-                                        <li>Educational resources on sustainable weight management</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>Available in 60-day (1,500 ETB) or 90-day (3,000 ETB) plans.</p>
-                                </div>
-                            </section>
+                            <div class="program-benefits-box">
+                                <h3 data-en="What you'll get" data-am="ምን ያገኛሉ">What you'll get</h3>
+                                <ul>
+                                    <li data-en="Personalized calorie and meal planning with macro tracking" data-am="የተበጀ የካሎሪ እና ምግብ እቅድ ከማክሮ ትራኪንግ ጋር">Personalized calorie and meal planning with macro tracking</li>
+                                    <li data-en="Fat-burning workouts with progressive intensity and variety" data-am="ስብ ማቃጠያ ስልጠናዎች በተሻሻለ ኃይል">Fat-burning workouts with progressive intensity</li>
+                                    <li data-en="Body composition tracking, weekly check-ins, and motivation coaching" data-am="የሰውነት ቅንብር ክትትል፣ ሳምንታዊ ማረጋገጫ እና ተነሳሽነት ማሰልጠኛ">Body composition tracking and weekly check-ins</li>
+                                </ul>
+                            </div>
 
-                            <section id="body-composition" class="program-section wow fadeInUp" data-wow-delay="0.1s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Body Composition</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/program-image-4.jpg" alt="Body Composition Program">
-                                    </figure>
-                                </div>
-                                <p>This program focuses on improving your ratio of muscle to fat through strength training, conditioning, and tailored nutrition support. By emphasizing hypertrophy and metabolic efficiency, you'll achieve a leaner, more defined physique while enhancing overall health.</p>
-                                <p>Our trainers use advanced techniques like periodization and recovery protocols to maximize results. You'll learn to track your progress with measurements and photos, ensuring you're on the right path to your ideal body composition.</p>
-                                <div class="program-benefits-box">
-                                    <h3>Key features</h3>
-                                    <ul>
-                                        <li>Lean muscle building routines with compound movements</li>
-                                        <li>Fat reduction through smart training cycles and cardio integration</li>
-                                        <li>Experienced coaching, including form checks and program adjustments</li>
-                                        <li>Nutritional guidance for optimal muscle-to-fat ratios</li>
-                                        <li>Progress monitoring with body fat analysis and strength metrics</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>90-day plan for 3,000 ETB.</p>
-                                </div>
-                            </section>
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="Available in 60-day (1,500 ETB) or 90-day (3,000 ETB) plans." 
+                                data-am="60 ቀን (1,500 ብር) ወይም 90 ቀን (3,000 ብር) እቅዶች ይገኛሉ።">
+                                Available in 60-day (1,500 ETB) or 90-day (3,000 ETB) plans.
+                                </p>
+                            </div>
+                        </section>
 
-                            <section id="athletic-performance" class="program-section wow fadeInUp" data-wow-delay="0.2s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Athletic Performance</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/trainers-1.JPG" alt="Athletic Performance">
-                                    </figure>
-                                </div>
-                                <p>Designed for athletes and active members, this program improves speed, agility, power, and sport-specific conditioning. Whether you're training for a sport or enhancing general athleticism, our evidence-based approach will elevate your performance to new levels.</p>
-                                <p>Incorporate plyometrics, speed drills, and functional training to build explosive power and endurance. Our certified coaches provide sport-specific adaptations and injury prevention strategies to keep you at peak performance.</p>
-                                <div class="program-benefits-box">
-                                    <h3>Program advantages</h3>
-                                    <ul>
-                                        <li>Explosive strength and power development with Olympic lifts</li>
-                                        <li>Agility drills, mobility training, and sport-specific exercises</li>
-                                        <li>Performance testing, progress tracking, and biomechanical analysis</li>
-                                        <li>Injury prevention and recovery protocols</li>
-                                        <li>Team or individual training options</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>90-day plan for 3,000 ETB.</p>
-                                </div>
-                            </section>
+                        <!-- ====================== BODY COMPOSITION ====================== -->
+                        <section id="body-composition" class="program-section wow fadeInUp" data-wow-delay="0.1s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Body Composition" data-am="የሰውነት ቅንብር">Body Composition</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/program-image-4.jpg" alt="Body Composition Program">
+                                </figure>
+                            </div>
+                            <p data-en="This program focuses on improving your ratio of muscle to fat through strength training, conditioning, and tailored nutrition support." 
+                            data-am="ይህ ፕሮግራም በጥንካሬ ስልጠና፣ ኮንዲሽኒንግ እና የተበጀ አመጋገብ የጡንቻ እና ስብ ጥምርታን ለማሻሻል ያተኩራል።">
+                            This program focuses on improving your ratio of muscle to fat...
+                            </p>
+                            <p data-en="Our trainers use advanced techniques like periodization and recovery protocols to maximize results." 
+                            data-am="አሰልጣኞቻችን ውጤቱን ለማሳደግ የተራቀቁ ቴክኒኮችን ይጠቀማሉ።">
+                            Our trainers use advanced techniques...
+                            </p>
 
-                            <section id="bodybuilding-program" class="program-section wow fadeInUp" data-wow-delay="0.3s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Bodybuilding Program</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/trainers-2.JPG" alt="Bodybuilding Program">
-                                    </figure>
-                                </div>
-                                <p>Our Bodybuilding Program is built around hypertrophy training, muscle symmetry, and advanced lifting techniques for serious muscle gains. Perfect for those aiming to compete or simply achieve an impressive physique, this program emphasizes progressive overload and recovery.</p>
-                                <p>Work with dedicated trainers who specialize in bodybuilding to refine your form and maximize growth. Includes supplementation guidance and posing practice to prepare for competitions.</p>
-                                <div class="program-benefits-box">
-                                    <h3>Included support</h3>
-                                    <ul>
-                                        <li>Training splits for chest, back, legs, shoulders, and arms with periodization</li>
-                                        <li>Nutrition strategies for muscle development and contest prep</li>
-                                        <li>Posing and physique refinement coaching with expert feedback</li>
-                                        <li>Supplementation recommendations and recovery techniques</li>
-                                        <li>Competition preparation and mental coaching</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>90-day plan for 3,500 ETB.</p>
-                                </div>
-                            </section>
+                            <div class="program-benefits-box">
+                                <h3 data-en="Key features" data-am="ዋና ባህሪያት">Key features</h3>
+                                <ul>
+                                    <li data-en="Lean muscle building routines with compound movements" data-am="ቀጭን ጡንቻ ለመገንባት የተዋቀሩ ልምምዶች">Lean muscle building routines</li>
+                                    <li data-en="Fat reduction through smart training cycles" data-am="ብልህ ስልጠና ዑደቶች በመጠቀም ስብን መቀነስ">Fat reduction through smart training</li>
+                                </ul>
+                            </div>
 
-                            <section id="posing-coaching" class="program-section wow fadeInUp" data-wow-delay="0.4s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Posing Coaching</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/trainers-3.jpg" alt="Posing Coaching">
-                                    </figure>
-                                </div>
-                                <p>Perfect your stage presentation with specialized posing coaching that enhances muscle control, posture, and confidence for competitions or photo-ready shape. This program is ideal for bodybuilders and fitness enthusiasts looking to showcase their hard work.</p>
-                                <p>Learn mandatory poses, transitions, and presentation skills from professional coaches. Includes video analysis and personalized feedback to refine your routine.</p>
-                                <div class="program-benefits-box">
-                                    <h3>Focus areas</h3>
-                                    <ul>
-                                        <li>Stage presence and confidence-building through practice sessions</li>
-                                        <li>Muscle separation and presentation techniques for each pose</li>
-                                        <li>Practice sessions with trainer feedback and video recording</li>
-                                        <li>Competition strategy and mental preparation</li>
-                                        <li>Individual and group posing workshops</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>Per session 300 ETB, or 30-day plan for 1,000 ETB.</p>
-                                </div>
-                            </section>
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="90-day plan for 3,000 ETB." data-am="90 ቀን እቅድ – 3,000 ብር">90-day plan for 3,000 ETB.</p>
+                            </div>
+                        </section>
 
-                            <section id="home-workout-programs" class="program-section wow fadeInUp" data-wow-delay="0.5s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Home Workout Programs</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/trainers-4.jpg" alt="Home Workout Programs">
-                                    </figure>
-                                </div>
-                                <p>Stay fit anywhere with workouts designed for home settings — no gym needed. These plans use bodyweight, minimal equipment, and clear progression steps. Ideal for busy schedules or travel, maintaining consistency from home.</p>
-                                <p>Receive video-guided workouts, progress trackers, and virtual check-ins with trainers. Adaptable for all fitness levels with modifications provided.</p>
-                                <div class="program-benefits-box">
-                                    <h3>Benefits</h3>
-                                    <ul>
-                                        <li>Accessible routines for all fitness levels with equipment options</li>
-                                        <li>Flexible scheduling with easy home adaptation and no commute</li>
-                                        <li>Coaching tips for form, motivation, and progression tracking</li>
-                                        <li>Virtual sessions and community support groups</li>
-                                        <li>Customizable plans for specific goals like strength or cardio</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>30-day plan for 1,000 ETB, or 60-day plan for 1,800 ETB.</p>
-                                </div>
-                            </section>
 
-                            <section id="nutrition-diet-planning" class="program-section wow fadeInUp" data-wow-delay="0.6s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Nutrition & Diet Planning</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/product-image-1-prime.jpg" alt="Nutrition & Diet Planning">
-                                    </figure>
-                                </div>
-                                <p>Nutrition is the foundation of every fitness goal. This program includes meal planning, macros, and habit coaching to fuel your workouts and recovery. Our registered dietitians provide evidence-based guidance for optimal health.</p>
-                                <p>Learn to balance macros, incorporate whole foods, and develop sustainable eating habits. Includes grocery lists, recipe ideas, and ongoing support to overcome challenges.</p>
-                                <div class="program-benefits-box">
-                                    <h3>Nutrition support</h3>
-                                    <ul>
-                                        <li>Customized meal guides and recipe ideas with shopping lists</li>
-                                        <li>Macro and calorie guidance tailored to your goals and preferences</li>
-                                        <li>Support for hydration, recovery, and energy levels with supplements</li>
-                                        <li>Educational workshops on nutrition science</li>
-                                        <li>Tracking tools and accountability check-ins</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>30-day plan for 1,500 ETB.</p>
-                                </div>
-                            </section>
+                        <!-- ====================== ATHLETIC PERFORMANCE ====================== -->
+                        <section id="athletic-performance" class="program-section wow fadeInUp" data-wow-delay="0.2s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Athletic Performance" data-am="የአትሌቲክስ አፈጻጸም">Athletic Performance</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/trainers-1.JPG" alt="Athletic Performance">
+                                </figure>
+                            </div>
+                            <p data-en="Designed for athletes and active members, this program improves speed, agility, power, and sport-specific conditioning." 
+                            data-am="ለአትሌቶች እና ንቁ አባላት የተዘጋጀ ፕሮግራም። ፍጥነት፣ ታጋሽነት፣ ኃይል እና ለስፖርት የተዘጋጀ ማጠናከሪያ ያሻሽላል።">
+                            Designed for athletes and active members...
+                            </p>
+                            <p data-en="Incorporate plyometrics, speed drills, and functional training to build explosive power and endurance." 
+                            data-am="ፕላይሜትሪክስ፣ ፍጥነት ልምምዶች እና ተግባራዊ ስልጠናዎችን ያካትታል።">
+                            Incorporate plyometrics, speed drills...
+                            </p>
 
-                            <section id="kids-fitness-program" class="program-section wow fadeInUp" data-wow-delay="0.7s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Kids Fitness Program</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/product-image-2-prime.jpg" alt="Kids Fitness Program">
-                                    </figure>
-                                </div>
-                                <p>Fun, safe, and engaging training designed for children and teens. This program builds coordination, confidence, and healthy exercise habits. Led by certified youth trainers, it promotes physical literacy and lifelong wellness.</p>
-                                <p>Incorporate games, sports, and age-appropriate challenges to make fitness enjoyable. Parents receive progress reports and tips for supporting healthy habits at home.</p>
-                                <div class="program-benefits-box">
-                                    <h3>What it includes</h3>
-                                    <ul>
-                                        <li>Age-appropriate movement exercises and games</li>
-                                        <li>Balance, agility, and strength drills with fun themes</li>
-                                        <li>Positive coaching, team-building, and lifestyle guidance</li>
-                                        <li>Nutrition education and healthy habit formation</li>
-                                        <li>Parent involvement sessions and progress tracking</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>30-day plan for 1,500 ETB (Ages 6–12).</p>
-                                </div>
-                            </section>
+                            <div class="program-benefits-box">
+                                <h3 data-en="Program advantages" data-am="የፕሮግራም ጥቅሞች">Program advantages</h3>
+                                <ul>
+                                    <li data-en="Explosive strength and power development" data-am="ፈንጂ ጥንካሬ እና ኃይል ማዳበር">Explosive strength and power development</li>
+                                    <li data-en="Agility drills and sport-specific exercises" data-am="ታጋሽነት ልምምዶች እና ለስፖርት የተዘጋጁ ልምምዶች">Agility drills and sport-specific exercises</li>
+                                    <li data-en="Injury prevention and recovery protocols" data-am="ጉዳትን መከላከል እና ማገገሚያ ፕሮቶኮሎች">Injury prevention and recovery protocols</li>
+                                </ul>
+                            </div>
 
-                            <section id="fifty-plus-fitness-program" class="program-section wow fadeInUp" data-wow-delay="0.8s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">50+ Fitness Program</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/product-image-3-prime.jpg" alt="50+ Fitness Program">
-                                    </figure>
-                                </div>
-                                <p>Designed for active adults, this program focuses on joint health, balance, strength, and flexibility to support mobility and vitality. Gentle yet effective, it helps maintain independence and quality of life.</p>
-                                <p>Emphasize low-impact exercises, mobility work, and functional movements. Includes fall prevention strategies and chronic condition management with medical clearance.</p>
-                                <div class="program-benefits-box">
-                                    <h3>Designed for</h3>
-                                    <ul>
-                                        <li>Gentle strength and mobility routines with modifications</li>
-                                        <li>Balance and posture improvement with stability training</li>
-                                        <li>Recovery and joint-support training with therapeutic exercises</li>
-                                        <li>Cardiovascular health and endurance building</li>
-                                        <li>Social interaction and community support</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>30-day plan for 2,000 ETB.</p>
-                                </div>
-                            </section>
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="90-day plan for 3,000 ETB." data-am="90 ቀን እቅድ – 3,000 ብር">90-day plan for 3,000 ETB.</p>
+                            </div>
+                        </section>
 
-                            <section id="pre-postnatal-program" class="program-section wow fadeInUp" data-wow-delay="0.9s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Pre & Postnatal Program</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/product-image-4-prime.jpg" alt="Pre & Postnatal Program">
-                                    </figure>
-                                </div>
-                                <p>Safe and supportive training for expectant and new mothers, helping maintain strength, ease pregnancy discomfort, and recover safely after birth. Led by prenatal/postnatal specialists with medical oversight.</p>
-                                <p>Focus on core stability, pelvic floor health, and gentle conditioning. Includes partner exercises and postpartum recovery protocols.</p>
-                                <div class="program-benefits-box">
-                                    <h3>Support includes</h3>
-                                    <ul>
-                                        <li>Low-impact strength and core stability work with modifications</li>
-                                        <li>Pelvic floor and posture exercises for pregnancy comfort</li>
-                                        <li>Recovery coaching after delivery with gradual progression</li>
-                                        <li>Partner involvement and family-friendly sessions</li>
-                                        <li>Nutrition guidance for maternal and infant health</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>30-day plan for 1,500 ETB.</p>
-                                </div>
-                            </section>
+                        <!-- ====================== BODYBUILDING ====================== -->
+                        <section id="bodybuilding-program" class="program-section wow fadeInUp" data-wow-delay="0.3s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Bodybuilding Program" data-am="የጡንቻ ግንባታ ፕሮግራም">Bodybuilding Program</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/trainers-2.JPG" alt="Bodybuilding Program">
+                                </figure>
+                            </div>
+                            <p data-en="Our Bodybuilding Program is built around hypertrophy training, muscle symmetry, and advanced lifting techniques." 
+                            data-am="የእኛ የጡንቻ ግንባታ ፕሮግራም በሃይፐርትሮፊ ስልጠና፣ የጡንቻ ሚዛን እና የላቀ ማንሳት ቴክኒኮች የተገነባ ነው።">
+                            Our Bodybuilding Program is built around hypertrophy training...
+                            </p>
+                            <p data-en="Perfect for those aiming to compete or achieve an impressive physique." 
+                            data-am="ለውድድር ለሚዘጋጁ ወይም አስደናቂ ሰውነት ለሚፈልጉ ተስማሚ ነው።">
+                            Perfect for those aiming to compete...
+                            </p>
 
-                            <section id="joint-mobility-health-program" class="program-section wow fadeInUp" data-wow-delay="1s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Joint & Mobility Health Program</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/illustration-3.png" alt="Joint & Mobility Health Program">
-                                    </figure>
-                                </div>
-                                <p>Improve flexibility, reduce stiffness, and protect your joints with mobility drills and corrective movement patterns crafted by our trainers. Ideal for injury prevention and rehabilitation.</p>
-                                <p>Incorporate yoga, foam rolling, and functional mobility exercises. Includes assessment and personalized plans for joint health.</p>
-                                <div class="program-benefits-box">
-                                    <h3>Highlights</h3>
-                                    <ul>
-                                        <li>Mobility flows for shoulders, hips, and spine with daily routines</li>
-                                        <li>Joint-friendly strength and stretching with proper form</li>
-                                        <li>Posture and movement quality coaching with video feedback</li>
-                                        <li>Injury prevention strategies and corrective exercises</li>
-                                        <li>Integration with other training programs</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>30-day plan for 1,500 ETB.</p>
-                                </div>
-                            </section>
+                            <div class="program-benefits-box">
+                                <h3 data-en="Included support" data-am="የተካተቱ ድጋፎች">Included support</h3>
+                                <ul>
+                                    <li data-en="Training splits with periodization" data-am="በጊዜ የተከፋፈሉ ስልጠናዎች">Training splits with periodization</li>
+                                    <li data-en="Nutrition strategies for muscle development" data-am="ለጡንቻ ልማት የአመጋገብ ስልቶች">Nutrition strategies for muscle development</li>
+                                </ul>
+                            </div>
 
-                            <section id="hormone-balance-training-program" class="program-section wow fadeInUp" data-wow-delay="1.1s" style="margin-bottom: 60px;">
-                                <h2 class="text-anime-style-3">Hormone Balance Training Program</h2>
-                                <div class="page-single-image">
-                                    <figure class="image-anime reveal">
-                                        <img src="images/hero-image-gold.png" alt="Hormone Balance Training Program">
-                                    </figure>
-                                </div>
-                                <p>This program blends stress management, restorative training, and balanced nutrition to support hormone health for better energy, recovery, and mood. Addresses hormonal imbalances through holistic approaches.</p>
-                                <p>Includes mindfulness practices, restorative yoga, and hormone-supporting foods. Consultations with wellness experts for personalized plans.</p>
-                                <div class="program-benefits-box">
-                                    <h3>Core components</h3>
-                                    <ul>
-                                        <li>Recovery-focused workouts and low-stress conditioning</li>
-                                        <li>Meal timing and hormone-supporting nutrition with recipes</li>
-                                        <li>Sleep, stress, and lifestyle guidance with tracking</li>
-                                        <li>Hormone testing options and expert consultations</li>
-                                        <li>Mindfulness and meditation for hormonal balance</li>
-                                    </ul>
-                                </div>
-                                <div class="program-features-box">
-                                    <h3>Program Duration & Pricing</h3>
-                                    <p>30-day plan for 3,000 ETB.</p>
-                                </div>
-                            </section>
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="90-day plan for 3,500 ETB." data-am="90 ቀን እቅድ – 3,500 ብር">90-day plan for 3,500 ETB.</p>
+                            </div>
+                        </section>
+
+                        <!-- ====================== POSING COACHING ====================== -->
+                        <section id="posing-coaching" class="program-section wow fadeInUp" data-wow-delay="0.4s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Posing Coaching" data-am="ፖዚንግ ማሰልጠኛ">Posing Coaching</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/trainers-3.jpg" alt="Posing Coaching">
+                                </figure>
+                            </div>
+                            <p data-en="Perfect your stage presentation with specialized posing coaching." 
+                            data-am="በተለይ የተዘጋጀ ፖዚንግ ማሰልጠኛ በመጠቀም የመድረክ አቀራረብህን አሳምር።">
+                            Perfect your stage presentation...
+                            </p>
+
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="Per session 300 ETB, or 30-day plan for 1,000 ETB." 
+                                data-am="በአንድ ክፍለ ጊዜ 300 ብር፣ ወይም 30 ቀን እቅድ 1,000 ብር።">
+                                Per session 300 ETB, or 30-day plan for 1,000 ETB.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- ====================== HOME WORKOUT ====================== -->
+                        <section id="home-workout-programs" class="program-section wow fadeInUp" data-wow-delay="0.5s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Home Workout Programs" data-am="የቤት ስልጠና ፕሮግራሞች">Home Workout Programs</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/trainers-4.jpg" alt="Home Workout Programs">
+                                </figure>
+                            </div>
+                            <p data-en="Stay fit anywhere with workouts designed for home settings — no gym needed." 
+                            data-am="በማንኛውም ቦታ ጂም ሳይገቡ በቤት ውስጥ ለማድረግ የተዘጋጁ ስልጠናዎችን ተጠቀሙ።">
+                            Stay fit anywhere with workouts designed for home settings...
+                            </p>
+                            <p data-en="Receive video-guided workouts, progress trackers, and virtual check-ins with trainers." 
+                            data-am="በቪዲዮ የሚመሩ ስልጠናዎች፣ የእድገት መከታተያዎች እና በቪዲዮ የሚደረጉ ማረጋገጫዎች ያገኛሉ።">
+                            Receive video-guided workouts...
+                            </p>
+
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="30-day plan for 1,000 ETB, or 60-day plan for 1,800 ETB." 
+                                data-am="30 ቀን እቅድ – 1,000 ብር፣ 60 ቀን እቅድ – 1,800 ብር።">
+                                30-day plan for 1,000 ETB, or 60-day plan for 1,800 ETB.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- ====================== NUTRITION ====================== -->
+                        <section id="nutrition-diet-planning" class="program-section wow fadeInUp" data-wow-delay="0.6s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Nutrition & Diet Planning" data-am="አመጋገብ እና አመጋገብ እቅድ">Nutrition & Diet Planning</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/product-image-1-prime.jpg" alt="Nutrition & Diet Planning">
+                                </figure>
+                            </div>
+                            <p data-en="Nutrition is the foundation of every fitness goal. This program includes meal planning, macros, and habit coaching." 
+                            data-am="አመጋገብ የአካል ብቃት ግብ መሠረት ነው። ይህ ፕሮግራም የምግብ እቅድ፣ ማክሮ እና ልማድ ማሰልጠኛ ያካትታል።">
+                            Nutrition is the foundation of every fitness goal...
+                            </p>
+
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="30-day plan for 1,500 ETB." data-am="30 ቀን እቅድ – 1,500 ብር">30-day plan for 1,500 ETB.</p>
+                            </div>
+                        </section>
+
+                        <!-- ====================== KIDS FITNESS ====================== -->
+                        <section id="kids-fitness-program" class="program-section wow fadeInUp" data-wow-delay="0.7s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Kids Fitness Program" data-am="የልጆች አካል ብቃት ፕሮግራም">Kids Fitness Program</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/product-image-2-prime.jpg" alt="Kids Fitness Program">
+                                </figure>
+                            </div>
+                            <p data-en="Fun, safe, and engaging training designed for children and teens." 
+                            data-am="ለልጆች እና ់ወጣቶች የተዘጋጀ አዝናኝ፣ ደህንነቱ የተጠበቀ እና ተሳታፊ ስልጠና።">
+                            Fun, safe, and engaging training designed for children...
+                            </p>
+
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="30-day plan for 1,500 ETB (Ages 6–12)." data-am="30 ቀን እቅድ – 1,500 ብር (6–12 አመት)">30-day plan for 1,500 ETB (Ages 6–12).</p>
+                            </div>
+                        </section>
+
+                        <!-- ====================== 50+ FITNESS ====================== -->
+                        <section id="fifty-plus-fitness-program" class="program-section wow fadeInUp" data-wow-delay="0.8s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="50+ Fitness Program" data-am="50+ አካል ብቃት ፕሮግራም">50+ Fitness Program</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/product-image-3-prime.jpg" alt="50+ Fitness Program">
+                                </figure>
+                            </div>
+                            <p data-en="Designed for active adults, this program focuses on joint health, balance, strength, and flexibility." 
+                            data-am="ለንቁ ጎልማሶች የተዘጋጀ። በመገጣጠሚያ ጤና፣ ሚዛን፣ ጥንካሬ እና ተለዋዋጭነት ላይ ያተኩራል።">
+                            Designed for active adults...
+                            </p>
+
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="30-day plan for 2,000 ETB." data-am="30 ቀን እቅድ – 2,000 ብር">30-day plan for 2,000 ETB.</p>
+                            </div>
+                        </section>
+
+                        <!-- ====================== PRE & POSTNATAL ====================== -->
+                        <section id="pre-postnatal-program" class="program-section wow fadeInUp" data-wow-delay="0.9s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Pre & Postnatal Program" data-am="እርግዝና በፊትና በኋላ ፕሮግራም">Pre & Postnatal Program</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/product-image-4-prime.jpg" alt="Pre & Postnatal Program">
+                                </figure>
+                            </div>
+                            <p data-en="Safe and supportive training for expectant and new mothers, helping maintain strength and recover safely." 
+                            data-am="ለነፍሰ ጡር እና አዲስ እናቶች ደህንነቱ የተጠበቀ እና ደጋፊ ስልጠና። ጥንካሬን ለመጠበቅ እና በአስተማማኝ መንገድ ለማገገም ይረዳል።">
+                            Safe and supportive training for expectant and new mothers...
+                            </p>
+
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="30-day plan for 1,500 ETB." data-am="30 ቀን እቅድ – 1,500 ብር">30-day plan for 1,500 ETB.</p>
+                            </div>
+                        </section>
+
+                        <!-- ====================== JOINT & MOBILITY ====================== -->
+                        <section id="joint-mobility-health-program" class="program-section wow fadeInUp" data-wow-delay="1s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Joint & Mobility Health Program" data-am="የመገጣጠሚያ ጤና እና ተገቢ እንቅስቃሴ ፕሮግራም">Joint & Mobility Health Program</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/illustration-3.png" alt="Joint & Mobility Health Program">
+                                </figure>
+                            </div>
+                            <p data-en="Improve flexibility, reduce stiffness, and protect your joints with mobility drills and corrective movements." 
+                            data-am="ተለዋዋጭነትን ለማሻሻል፣ ግትርነትን ለመቀነስ እና መገጣጠሚያዎችን ለመጠበቅ የተገቢ እንቅስቃሴ ልምምዶችን ይጠቀሙ።">
+                            Improve flexibility, reduce stiffness...
+                            </p>
+
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="30-day plan for 1,500 ETB." data-am="30 ቀን እቅድ – 1,500 ብር">30-day plan for 1,500 ETB.</p>
+                            </div>
+                        </section>
+
+                        <!-- ====================== HORMONE BALANCE ====================== -->
+                        <section id="hormone-balance-training-program" class="program-section wow fadeInUp" data-wow-delay="1.1s" style="margin-bottom: 60px;">
+                            <h2 class="text-anime-style-3" data-en="Hormone Balance Training Program" data-am="የሆርሞን ሚዛን ስልጠና ፕሮግራም">Hormone Balance Training Program</h2>
+                            <div class="page-single-image">
+                                <figure class="image-anime reveal">
+                                    <img src="images/hero-image-gold.png" alt="Hormone Balance Training Program">
+                                </figure>
+                            </div>
+                            <p data-en="This program blends stress management, restorative training, and balanced nutrition to support hormone health." 
+                            data-am="ይህ ፕሮግራም ጭንቀትን ማስተዳደር፣ ማገገሚያ ስልጠና እና ሚዛናዊ አመጋገብን ያጣምራል።">
+                            This program blends stress management...
+                            </p>
+
+                            <div class="program-features-box">
+                                <h3 data-en="Program Duration & Pricing" data-am="የፕሮግራም ቆይታ እና ዋጋ">Program Duration & Pricing</h3>
+                                <p data-en="30-day plan for 3,000 ETB." data-am="30 ቀን እቅድ – 3,000 ብር">30-day plan for 3,000 ETB.</p>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- End of program-details -->
+
+
+                    <div class="page-single-faqs">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Frequently asked questions</h2>
+                            <p class="wow fadeInUp">Have questions about our Strength Training programs? You're not alone. At AD Wellness Center, we understand that every member has unique fitness goals, experience levels, and concerns.</p>
+                    </div>
+                    <!-- Section Title End -->
+
+                    <!-- Faqs Content Start -->
+                    <div class="faqs-content-gold">
+                        <div class="section-title">
+                            <span class="section-sub-title wow fadeInUp" 
+                                  data-en="FAQ's" 
+                                  data-am="ተደጋጋሚ ጥያቄዎች">FAQ's</span>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque" 
+                                data-en="Frequently Asked Questions"
+                                data-am="ብዙ ጊዜ የሚጠየቁ ጥያቄዎች">Frequently Asked Questions</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s" 
+                               data-en="Find answers to the most common questions about AD Wellness Center."
+                               data-am="ስለ AD Wellness Center ስለሚጠየቁ በጣም የተለመዱ ጥያቄዎች መልሶችን ያግኙ።">
+                               Find answers to the most common questions about AD Wellness Center.
+                            </p>
                         </div>
-                        <div class="page-single-faqs">
-                            <!-- Section Title Start -->
-                            <div class="section-title">
-                                <h2 class="text-anime-style-3" data-cursor="-opaque">Frequently asked questions</h2>
-                                <p class="wow fadeInUp">Have questions about our Strength Training programs? You're not alone. At AD Wellness Center, we understand that every member has unique fitness goals, experience levels, and concerns.</p>
+
+                        <!-- FAQ Accordion Start -->
+                        <div class="faq-accordion-gold" id="accordion">
+                            <!-- FAQ 1 -->
+                            <div class="accordion-item-gold wow fadeInUp">
+                                <h2 class="accordion-header" id="heading1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1"
+                                            data-en="Q1. Is this gym suitable for beginners?" 
+                                            data-am="Q1. ይህ ጂም ለጀማሪዎች ተስማሚ ነው?">
+                                        Q1. Is this gym suitable for beginners?
+                                    </button>
+                                </h2>
+                                <div id="collapse1" class="accordion-collapse collapse show" role="region" aria-labelledby="heading1" data-bs-parent="#accordion">
+                                    <div class="accordion-body" 
+                                         data-en="Yes. It’s designed for beginners with certified trainers and beginner-friendly programs." 
+                                         data-am="አዎ። በተረጋገጡ አሰልጣኞች እና ለጀማሪዎች ተስማሚ በሆኑ ፕሮግራሞች የተዘጋጀ ነው።">
+                                        Yes. It’s designed for beginners with certified trainers and beginner-friendly programs.
+                                    </div>
+                                </div>
                             </div>
-                            <!-- Section Title End -->
 
-                            <!-- FAQ Accordion Start -->
-                            <div class="faq-accordion-gold" id="accordion">
-                                <!-- FAQ Item Start -->
-                                <div class="accordion-item-gold wow fadeInUp">
-                                    <h2 class="accordion-header" id="heading1">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                            Q1. Is this gym suitable for beginners?
-                                        </button>
-                                    </h2>
-                                    <div id="collapse1" class="accordion-collapse collapse show" role="region" aria-labelledby="heading1" data-bs-parent="#accordion">
-                                        <div class="accordion-body">
-                                            <p>Yes. It’s designed for beginners with certified trainers and beginner-friendly programs.</p>
-                                        </div>
+                            <!-- FAQ 2 -->
+                            <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.2s">
+                                <h2 class="accordion-header" id="heading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2"
+                                            data-en="Q2. Do you provide personal training?" 
+                                            data-am="Q2. የግል ስልጠና ትሰጣላችሁ?">
+                                        Q2. Do you provide personal training?
+                                    </button>
+                                </h2>
+                                <div id="collapse2" class="accordion-collapse collapse" role="region" aria-labelledby="heading2" data-bs-parent="#accordion">
+                                    <div class="accordion-body" 
+                                         data-en="Yes, we offer certified personal trainers who provide one-on-one coaching tailored to your fitness goals." 
+                                         data-am="አዎ፣ ለአካል ብቃት ግቦችህ የተበጀ የግል-ለግል ስልጠና የሚሰጡ የተረጋገጡ የግል አሰልጣኞች አሉን።">
+                                        Yes, we offer certified personal trainers who provide one-on-one coaching tailored to your fitness goals.
                                     </div>
                                 </div>
-                                <!-- FAQ Item End -->
-
-                                <!-- FAQ Item Start -->
-                                <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.2s">
-                                    <h2 class="accordion-header" id="heading2">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                            Q2. Do you provide personal training?
-                                        </button>
-                                    </h2>
-                                    <div id="collapse2" class="accordion-collapse collapse" role="region" aria-labelledby="heading2" data-bs-parent="#accordion">
-                                        <div class="accordion-body">
-                                            <p>Yes, we offer certified personal trainers who provide one-on-one coaching tailored to your fitness goals.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- FAQ Item End -->
-
-                                <!-- FAQ Item Start -->
-                                <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.4s">
-                                    <h2 class="accordion-header" id="heading3">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                                            Q3. What types of programs do you offer?
-                                        </button>
-                                    </h2>
-                                    <div id="collapse3" class="accordion-collapse collapse" role="region" aria-labelledby="heading3" data-bs-parent="#accordion">
-                                        <div class="accordion-body">
-                                            <p>We offer a variety of fitness programs, including strength training, cardio, flexibility, and functional fitness.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- FAQ Item End -->
-
-                                <!-- FAQ Item Start -->
-                                <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.6s">
-                                    <h2 class="accordion-header" id="heading4">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                            Q4. Are workout plans customized?
-                                        </button>
-                                    </h2>
-                                    <div id="collapse4" class="accordion-collapse collapse" role="region" aria-labelledby="heading4" data-bs-parent="#accordion">
-                                        <div class="accordion-body">
-                                            <p>Yes, our workout plans are customized based on your individual fitness level, goals, and preferences.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- FAQ Item End -->
-
-                                <!-- FAQ Item Start -->
-                                <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.8s">
-                                    <h2 class="accordion-header" id="heading5">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                                            Q5. Do you offer nutrition or diet guidance?
-                                        </button>
-                                    </h2>
-                                    <div id="collapse5" class="accordion-collapse collapse" role="region" aria-labelledby="heading5" data-bs-parent="#accordion">
-                                        <div class="accordion-body">
-                                            <p>Yes. Nutrition and diet guidance are offered alongside training services.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- FAQ Item End -->
                             </div>
-                            <!-- FAQ Accordion End -->
+
+                            <!-- FAQ 3 -->
+                            <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.4s">
+                                <h2 class="accordion-header" id="heading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3"
+                                            data-en="Q3. What types of programs do you offer?" 
+                                            data-am="Q3. ምን አይነት ፕሮግራሞች ታቀርባላችሁ?">
+                                        Q3. What types of programs do you offer?
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse" role="region" aria-labelledby="heading3" data-bs-parent="#accordion">
+                                    <div class="accordion-body" 
+                                         data-en="We offer a variety of fitness programs, including strength training, cardio, flexibility, and functional fitness." 
+                                         data-am="የጥንካሬ ስልጠና፣ ካርዲዮ፣ ተለዋዋጭነት እና ተግባራዊ አካል ብቃትን ጨምሮ የተለያዩ የአካል ብቃት ፕሮግራሞችን እናቀርባለን።">
+                                        We offer a variety of fitness programs, including strength training, cardio, flexibility, and functional fitness.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ 4 -->
+                            <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.6s">
+                                <h2 class="accordion-header" id="heading4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4"
+                                            data-en="Q4. Are workout plans customized?" 
+                                            data-am="Q4. የስልጠና እቅዶች የተበጀዎች ናቸው?">
+                                        Q4. Are workout plans customized?
+                                    </button>
+                                </h2>
+                                <div id="collapse4" class="accordion-collapse collapse" role="region" aria-labelledby="heading4" data-bs-parent="#accordion">
+                                    <div class="accordion-body" 
+                                         data-en="Yes, our workout plans are customized based on your individual fitness level, goals, and preferences." 
+                                         data-am="አዎ፣ የስልጠና እቅዶቻችን በግለሰብ የአካል ብቃት ደረጃ፣ ግቦች እና ምርጫዎች መሰረት የተበጀዎች ናቸው።">
+                                        Yes, our workout plans are customized based on your individual fitness level, goals, and preferences.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ 5 -->
+                            <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.8s">
+                                <h2 class="accordion-header" id="heading5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5"
+                                            data-en="Q5. Do you offer nutrition or diet guidance?" 
+                                            data-am="Q5. የአመጋገብ ወይም አመጋገብ መመሪያ ትሰጣላችሁ?">
+                                        Q5. Do you offer nutrition or diet guidance?
+                                    </button>
+                                </h2>
+                                <div id="collapse5" class="accordion-collapse collapse" role="region" aria-labelledby="heading5" data-bs-parent="#accordion">
+                                    <div class="accordion-body" 
+                                         data-en="Yes. Nutrition and diet guidance are offered alongside training services." 
+                                         data-am="አዎ። ከስልጠና አገልግሎቶች ጋር የአመጋገብ እና አመጋገብ መመሪያ ይሰጣል።">
+                                        Yes. Nutrition and diet guidance are offered alongside training services.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ Accordion End -->
                         </div>
                         <!-- Page Single FAQs End -->
                     </div>
@@ -591,29 +627,24 @@
     </div>
     <!-- Page Program Single End -->
 
-
     <!-- Main Footer Start -->
     <footer class="main-footer-gold bg-section dark-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Footer Content Box Start -->
                     <div class="footer-content-box-gold">
-                        <!-- Footer Links Box Start -->
+                        <!-- Footer Links Box 1 -->
                         <div class="footer-links-box-gold">
-                            <!-- Footer Links Start -->
                             <div class="footer-links-gold">
-                                <h2>Quick Links</h2>
+                                <h2 data-en="Quick Links" data-am="ፈጣን ማገናኛዎች">Quick Links</h2>
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="packages.html">Packages</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="index.html" data-en="Home" data-am="መነሻ">Home</a></li>
+                                    <li><a href="about.html" data-en="About Us" data-am="ስለ እኛ">About Us</a></li>
+                                    <li><a href="packages.html" data-en="Packages" data-am="ፓኬጆች">Packages</a></li>
+                                    <li><a href="contact.html" data-en="Contact Us" data-am="ያግኙን">Contact Us</a></li>
                                 </ul>
                             </div>
-                            <!-- Footer Links End -->
 
-                            <!-- Footer Social Links Start -->
                             <div class="footer-social-links-gold">
                                 <ul>
                                     <li><a href="https://t.me/dagiyo60"><i class="fa-regular fa-paper-plane"></i></a></li>
@@ -622,57 +653,53 @@
                                     <li><a href="https://www.instagram.com/___.amanu"><i class="fa-brands fa-instagram"></i></a></li>
                                 </ul>
                             </div>
-                            <!-- Footer Social Links End -->
                         </div>
-                        <!-- Footer Links Box End -->
-                         
-                        <!-- About Footer Start -->
+
+                        <!-- About Footer -->
                         <div class="about-footer-gold">
                             <div class="footer-logo-gold">
                                 <img src="images/logo.svg" alt="">
                             </div>               
                             <div class="about-footer-content-gold">
-                                <p>We are a results-driven fitness center committed to helping individuals achieve strength, confidence, and healthier lifestyles.</p>
+                                <p data-en="We are a results-driven fitness center committed to helping individuals achieve strength, confidence, and healthier lifestyles." 
+                                   data-am="ውጤት ያተኮረ የአካል ብቃት ማእከል ነን። ግለሰቦች ጥንካሬ፣ በራስ መተማመን እና ጤናማ የአኗኗር ዘይቤ እንዲኖራቸው እንረዳለን።">
+                                   We are a results-driven fitness center committed to helping individuals achieve strength, confidence, and healthier lifestyles.
+                                </p>
                             </div>
                             <div class="faqs-cta-btn-gold">
-                                <a href="contact.html" class="btn-default btn-highlighted">Contact Us Now</a>
+                                <a href="contact.html" class="btn-default btn-highlighted" 
+                                   data-en="Contact Us Now" data-am="አሁን ያግኙን">Contact Us Now</a>
                             </div>         
                         </div>
-                        <!-- About Footer End -->
 
-                        <!-- Footer Links Box Start -->
+                        <!-- Footer Links Box 2 -->
                         <div class="footer-links-box-gold">
-                            <!-- Footer Links Start -->
                             <div class="footer-links-gold">
-                                <h2>Training Programs</h2>
+                                <h2 data-en="Training Programs" data-am="የስልጠና ፕሮግራሞች">Training Programs</h2>
                                 <ul>
-                                    <li><a href="#weight-loss-program">Weight Loss Program</a></li>
-                                    <li><a href="#body-composition">Body Composition</a></li>
-                                    <li><a href="#bodybuilding-program">Bodybuilding Program</a></li>
-                                    <li><a href="#posing-coaching">Posing Coaching</a></li>
-                                    <li><a href="#home-workout-programs">Home Workout Programs</a></li>
-                                    <li><a href="#nutrition-diet-planning">Nutrition & Diet Planning</a></li>
-                                    <li><a href="packages.html">Explore All Programs...</a></li>
+                                    <li><a href="#weight-loss-program" data-en="Weight Loss Program" data-am="የሰውነት ክብደት መቀነስ ፕሮግራም">Weight Loss Program</a></li>
+                                    <li><a href="#body-composition" data-en="Body Composition" data-am="የሰውነት ቅንብር">Body Composition</a></li>
+                                    <li><a href="#bodybuilding-program" data-en="Bodybuilding Program" data-am="የጡንቻ ግንባታ ፕሮግራም">Bodybuilding Program</a></li>
+                                    <li><a href="#posing-coaching" data-en="Posing Coaching" data-am="ፖዚንግ ማሰልጠኛ">Posing Coaching</a></li>
+                                    <li><a href="#home-workout-programs" data-en="Home Workout Programs" data-am="የቤት ስልጠና ፕሮግራሞች">Home Workout Programs</a></li>
+                                    <li><a href="#nutrition-diet-planning" data-en="Nutrition & Diet Planning" data-am="አመጋገብ እና አመጋገብ እቅድ">Nutrition & Diet Planning</a></li>
+                                    <li><a href="packages.html" data-en="Explore All Programs..." data-am="ሁሉንም ፕሮግራሞች ያስሱ...">Explore All Programs...</a></li>
                                 </ul>
                             </div>
-                            <!-- Footer Links End -->
                         </div>
-                        <!-- Footer Links Box End -->
                     </div>
-                    <!-- Footer Content Box End -->
                 </div>
 
                 <div class="col-lg-12">
-                    <!-- Footer Copyright Text Start -->
                     <div class="footer-copyright-text">
                         <p>Copyright © 2026 All Rights Reserved.</p>
                     </div>
-                    <!-- Footer Copyright Text End -->
                 </div>
             </div>
         </div>
     </footer>
     <!-- Main Footer End -->
+
     
 <!-- 
     <script>
@@ -717,6 +744,9 @@
 
     <!-- gallery js file -->
     <script src="js/gallery.js"></script>
+    
+    <!-- Language Script -->
+    <script src="js/language.js"></script>
 
     <!-- Custom script for program sections -->
     <script>

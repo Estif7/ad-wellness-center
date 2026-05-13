@@ -11263,3 +11263,50 @@ header.main-header .header-sticky.active{
         display: none !important;
     }
 }
+
+
+
+
+
+
+
+/* Language Switcher */
+.language-switcher {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.language-switcher button {
+    padding: 5px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 2px solid rgba(255,255,255,0.4);
+    background: rgba(0,0,0,0.3);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 42px;
+}
+
+.language-switcher button:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.7);
+}
+
+.language-switcher button.active {
+    background: #D5EB45;
+    color: #000;
+    border-color: #D5EB45;
+    font-weight: 700;
+}
+
+/* Mobile adjustments */
+@media (max-width: 991px) {
+    .language-switcher button {
+        padding: 4px 8px;
+        font-size: 12px;
+        min-width: 38px;
+    }
+}
