@@ -2,98 +2,81 @@
 <html lang="zxx">
 
 <head>
-	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="Awaiken">
-	<!-- Page Title -->
-    <title>AD Wellness Center</title>
+	<title>AD Wellness Center</title>
 
-	<!-- Favicon Icon -->
+	<!-- Favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
-    <!-- Google Fonts Css-->
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet">
-    <!-- Custom Fonts Css-->
-	<link href="css/fonts.css" rel="stylesheet" media="screen">
-	<!-- Bootstrap Css -->
-	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<!-- SlickNav Css -->
-	<link href="css/slicknav.min.css" rel="stylesheet">
-	<!-- Swiper Css -->
-	<link rel="stylesheet" href="css/swiper-bundle.min.css">
-	<!-- Font Awesome Icon Css-->
-	<link href="css/all.min.css" rel="stylesheet" media="screen">
-	<!-- Animated Css -->
-	<link href="css/animate.css" rel="stylesheet">
-    <!-- Magnific Popup Core Css File -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<!-- Mouse Cursor Css File -->
-	<link rel="stylesheet" href="css/mousecursor.css">
-	<!-- Main Custom Css -->
-	<link href="css/custom.css" rel="stylesheet" media="screen">
-    
-	<!-- Auth Scripts -->
-    <script type="module" src="js/auth.js" defer></script>
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+	<link rel="manifest" href="/favicon/site.webmanifest">
 
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans+Ethiopic:wght@400;500;700&display=swap" rel="stylesheet">
+
+	<link href="css/fonts.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/slicknav.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/swiper-bundle.min.css">
+	<link href="css/all.min.css" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="css/mousecursor.css">
+	<link href="css/custom.css" rel="stylesheet">
+    
+	<script type="module" src="js/auth.js" defer></script>
 </head>
 <body>
-
-    <!-- Preloader Start -->
-	<!-- <div class="preloader">
-		<div class="loading-container">
-			<div class="loading"></div>
-			<div id="loading-icon"><img src="images/loader.svg" alt=""></div>
-		</div>
-	</div> -->
-	<!-- Preloader End -->
 
     <!-- Header Start -->
 	<header class="main-header">
 		<div class="header-sticky">
 			<nav class="navbar navbar-expand-lg">
 				<div class="container">
-					<!-- Logo Start -->
 					<a class="navbar-brand" href="index.html">
 						<img src="images/logo.png" alt="Logo">
 					</a>
-					<!-- Logo End -->
 
-                    <!-- Main Menu Start -->
                     <div class="collapse navbar-collapse main-menu">
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto" id="menu">
-                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="profile.html">My Profile</a></li>
-                                <li class="nav-item"><a class="nav-link" href="dashboard.html">My Dashboard</a></li>
-                                <li class="nav-item"><a class="nav-link" href="packages.html">Packages</a></li>
-                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="index.html" data-en="Home" data-am="መነሻ">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="profile.html" data-en="My Profile" data-am="የእኔ መግለጫ">My Profile</a></li>
+                                <li class="nav-item"><a class="nav-link" href="dashboard.html" data-en="My Dashboard" data-am="ዳሽቦርድ">My Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link" href="packages.html" data-en="Packages" data-am="ፓኬጆች">Packages</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact.html" data-en="Contact Us" data-am="ያግኙን">Contact Us</a></li>
                             </ul>
                         </div>
                         
-                        <!-- Header Btn Start -->
-                        <div class="header-btn">
-                            <button id="login-btn" onclick="login()" class="btn-default">Login</button>
-                            <button id="logout-btn" onclick="logout()" class="btn-default" style="display:none;">Logout</button>
+                        <div class="header-btn d-flex align-items-center gap-2">
+                            <button id="login-btn" onclick="login()" class="btn-default" data-en="Login" data-am="ግባ">Login</button>
+                            <button id="logout-btn" onclick="logout()" class="btn-default" style="display:none;" data-en="Logout" data-am="ውጣ">Logout</button>
                             <div id="user-info" style="display:inline-block; margin-left:10px; color: white; font-weight: 500;"></div>
+                            
+                            <!-- Desktop Language -->
+                            <div class="language-switcher d-none d-lg-flex">
+                                <button id="lang-en" onclick="switchLanguage('en')" class="btn btn-sm btn-outline-light active">EN</button>
+                                <button id="lang-am" onclick="switchLanguage('am')" class="btn btn-sm btn-outline-light">አማ</button>
+                            </div>
                         </div>
-                        <!-- Header Btn End -->
                     </div>
-					<!-- Main Menu End -->
-					<div class="navbar-toggle"></div>
-				</div>
-			</nav>
-			<div class="responsive-menu"></div>
-		</div>
-	</header>
-	<!-- Header End -->
+
+                    <!-- Mobile Language + Hamburger -->
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="language-switcher d-lg-none">
+                            <button id="lang-en-mobile" onclick="switchLanguage('en')" class="btn btn-sm btn-outline-light active">EN</button>
+                            <button id="lang-am-mobile" onclick="switchLanguage('am')" class="btn btn-sm btn-outline-light">አማ</button>
+                        </div>
+                        <div class="navbar-toggle"></div>
+                    </div>
+                </div>
+            </nav>
+            <div class="responsive-menu"></div>
+        </div>
+    </header>
+    <!-- Header End -->
 
     <!-- Page Header Section Start -->
     <div class="page-header bg-section dark-section parallaxie">
@@ -102,7 +85,9 @@
                 <div class="col-lg-12">
                     <!-- Page Header Box Start -->
                     <div class="page-header-box">
-                        <h1 class="text-anime-style-3" data-cursor="-opaque">Contact Us</h1>
+                        <h1 class="text-anime-style-3" data-cursor="-opaque"
+                        data-en="Contact Us"
+                        data-am="ያግኙን">Contact Us</h1>
                     </div>
                     <!-- Page Header Box End -->
                 </div>
@@ -129,30 +114,28 @@
 
                             <!-- Contact Info Items List Start -->
                             <div class="contact-info-items-list wow fadeInUp">
-                                <!-- Conatct Info Item Start -->
+                                <!-- Phone -->
                                 <div class="contact-info-item">
                                     <div class="icon-box">
                                         <img src="images/icon-phone-primary.svg" alt="">
                                     </div>
                                     <div class="contact-info-item-content">
-                                        <h2>Phone Number</h2>
+                                        <h2 data-en="Phone Number" data-am="ስልክ ቁጥር">Phone Number</h2>
                                         <p><a href="tel:+251973106760">+(251) 973 10 67 60</a></p>
                                         <p><a href="tel:+251900462431">+(251) 900 46 24 31</a></p>
                                     </div>
                                 </div>
-                                <!-- Conatct Info Item End -->
 
-                                <!-- Conatct Info Item Start -->
+                                <!-- Email -->
                                 <div class="contact-info-item">
                                     <div class="icon-box">
                                         <img src="images/icon-mail-primary.svg" alt="">
                                     </div>
                                     <div class="contact-info-item-content">
-                                        <h2>Email Address</h2>
-                                        <p><a href="mailto:info@domain.com">dagiy193@gmail.com</a></p>
+                                        <h2 data-en="Email Address" data-am="ኢሜይል አድራሻ">Email Address</h2>
+                                        <p><a href="mailto:dagiy193@gmail.com">dagiy193@gmail.com</a></p>
                                     </div>
                                 </div>
-                                <!-- Conatct Info Item End -->
                             </div>
                             <!-- Contact Info Items List End -->
                         </div>
@@ -161,8 +144,14 @@
                         <div class="contact-form">
                             <!-- Section Title Start -->
                             <div class="section-title">
-                                <h2 class="text-anime-style-3" data-cursor="-opaque">Contact Us Today</h2>
-                                <p class="wow fadeInUp" data-wow-delay="0.2s">Ready to begin your fitness journey? Contact AD Wellness Center today and let our expert trainers guide you with the right program and support.</p>  
+                                <h2 class="text-anime-style-3" data-cursor="-opaque" 
+                                    data-en="Contact Us Today" 
+                                    data-am="ዛሬ ያግኙን">Contact Us Today</h2>
+                                <p class="wow fadeInUp" data-wow-delay="0.2s" 
+                                data-en="Ready to begin your fitness journey? Contact AD Wellness Center today and let our expert trainers guide you with the right program and support." 
+                                data-am="የአካል ብቃት ጉዞዎን ለመጀመር ዝግጁ ነዎት? ዛሬ ከ AD Wellness Center ጋር ይገናኙ እና ባለሙያ አሰልጣኞቻችን ትክክለኛውን ፕሮግራም እና ድጋፍ እንዲመሩዎት ያድርጉ።">
+                                Ready to begin your fitness journey? Contact AD Wellness Center today...
+                                </p>  
                             </div>
                             <!-- Section Title End -->
                             
@@ -170,37 +159,54 @@
                             <form id="contactForm" action="#" method="POST" data-toggle="validator" class="wow fadeInUp" data-wow-delay="0.4s">
                                 <div class="row">
                                     <div class="form-group col-md-6 mb-4">
-                                        <label>First Name *</label>
-                                        <input type="text" name="fname" class="form-control" id="fname" placeholder="Enter First Name" required>
+                                        <label data-en="First Name *" data-am="የመጀመሪያ ስም *">First Name *</label>
+                                        <input type="text" name="fname" class="form-control" id="fname" 
+                                            placeholder="Enter First Name" 
+                                            data-en-placeholder="Enter First Name" 
+                                            data-am-placeholder="የመጀመሪያ ስም ያስገቡ" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="form-group col-md-6 mb-4">
-                                        <label>Last Name *</label>
-                                        <input type="text" name="lname" class="form-control" id="lname" placeholder="Enter Last Name" required>
+                                        <label data-en="Last Name *" data-am="የአባት ስም *">Last Name *</label>
+                                        <input type="text" name="lname" class="form-control" id="lname" 
+                                            placeholder="Enter Last Name" 
+                                            data-en-placeholder="Enter Last Name" 
+                                            data-am-placeholder="የአባት ስም ያስገቡ" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="form-group col-md-6 mb-4">
-                                        <label>Email Address *</label>
-                                        <input type="email" name ="email" class="form-control" id="email" placeholder="Enter Email Address" required>
+                                        <label data-en="Email Address *" data-am="ኢሜይል አድራሻ *">Email Address *</label>
+                                        <input type="email" name="email" class="form-control" id="email" 
+                                            placeholder="Enter Email Address" 
+                                            data-en-placeholder="Enter Email Address" 
+                                            data-am-placeholder="ኢሜይል አድራሻ ያስገቡ" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="form-group col-md-6 mb-4">
-                                        <label>Phone Number *</label>
-                                        <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter Phone Number" required>
+                                        <label data-en="Phone Number *" data-am="ስልክ ቁጥር *">Phone Number *</label>
+                                        <input type="text" name="phone" class="form-control" id="phone" 
+                                            placeholder="Enter Phone Number" 
+                                            data-en-placeholder="Enter Phone Number" 
+                                            data-am-placeholder="ስልክ ቁጥር ያስገቡ" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="form-group col-md-12 mb-5">
-                                        <label>Message</label>
-                                        <textarea name="message" class="form-control" id="message" rows="5" placeholder="Any Additional Message..."></textarea>
+                                        <label data-en="Message" data-am="መልእክት">Message</label>
+                                        <textarea name="message" class="form-control" id="message" rows="5" 
+                                                placeholder="Any Additional Message..." 
+                                                data-en-placeholder="Any Additional Message..." 
+                                                data-am-placeholder="ማንኛውም ተጨማሪ መልእክት..."></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn-default">Submit Message</button>
+                                        <button type="submit" class="btn-default" 
+                                                data-en="Submit Message" 
+                                                data-am="መልእክት ላክ">Submit Message</button>
                                         <div id="msgSubmit" class="h3 hidden"></div>
                                     </div>
                                 </div>
@@ -221,23 +227,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Footer Content Box Start -->
                     <div class="footer-content-box-gold">
-                        <!-- Footer Links Box Start -->
+                        <!-- Footer Links Box 1 -->
                         <div class="footer-links-box-gold">
-                            <!-- Footer Links Start -->
                             <div class="footer-links-gold">
-                                <h2>Quick Links</h2>
+                                <h2 data-en="Quick Links" data-am="ፈጣን ማገናኛዎች">Quick Links</h2>
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="packages.html">Packages</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="index.html" data-en="Home" data-am="መነሻ">Home</a></li>
+                                    <li><a href="about.html" data-en="About Us" data-am="ስለ እኛ">About Us</a></li>
+                                    <li><a href="packages.html" data-en="Packages" data-am="ፓኬጆች">Packages</a></li>
+                                    <li><a href="contact.html" data-en="Contact Us" data-am="ያግኙን">Contact Us</a></li>
                                 </ul>
                             </div>
-                            <!-- Footer Links End -->
 
-                            <!-- Footer Social Links Start -->
                             <div class="footer-social-links-gold">
                                 <ul>
                                     <li><a href="https://t.me/dagiyo60"><i class="fa-regular fa-paper-plane"></i></a></li>
@@ -246,52 +248,47 @@
                                     <li><a href="https://www.instagram.com/___.amanu"><i class="fa-brands fa-instagram"></i></a></li>
                                 </ul>
                             </div>
-                            <!-- Footer Social Links End -->
                         </div>
-                        <!-- Footer Links Box End -->
-                         
-                        <!-- About Footer Start -->
+
+                        <!-- About Footer -->
                         <div class="about-footer-gold">
                             <div class="footer-logo-gold">
                                 <img src="images/logo.svg" alt="">
                             </div>               
                             <div class="about-footer-content-gold">
-                                <p>We are a results-driven fitness center committed to helping individuals achieve strength, confidence, and healthier lifestyles.</p>
+                                <p data-en="We are a results-driven fitness center committed to helping individuals achieve strength, confidence, and healthier lifestyles." 
+                                   data-am="ውጤት ያተኮረ የአካል ብቃት ማእከል ነን። ግለሰቦች ጥንካሬ፣ በራስ መተማመን እና ጤናማ የአኗኗር ዘይቤ እንዲኖራቸው እንረዳለን።">
+                                   We are a results-driven fitness center committed to helping individuals achieve strength, confidence, and healthier lifestyles.
+                                </p>
                             </div>
                             <div class="faqs-cta-btn-gold">
-                                <a href="contact.html" class="btn-default btn-highlighted">Contact Us Now</a>
+                                <a href="contact.html" class="btn-default btn-highlighted" 
+                                   data-en="Contact Us Now" data-am="አሁን ያግኙን">Contact Us Now</a>
                             </div>         
                         </div>
-                        <!-- About Footer End -->
 
-                        <!-- Footer Links Box Start -->
+                        <!-- Footer Links Box 2 -->
                         <div class="footer-links-box-gold">
-                            <!-- Footer Links Start -->
                             <div class="footer-links-gold">
-                                <h2>Training Programs</h2>
+                                <h2 data-en="Training Programs" data-am="የስልጠና ፕሮግራሞች">Training Programs</h2>
                                 <ul>
-                                    <li><a href="#weight-loss-program">Weight Loss Program</a></li>
-                                    <li><a href="#body-composition">Body Composition</a></li>
-                                    <li><a href="#bodybuilding-program">Bodybuilding Program</a></li>
-                                    <li><a href="#posing-coaching">Posing Coaching</a></li>
-                                    <li><a href="#home-workout-programs">Home Workout Programs</a></li>
-                                    <li><a href="#nutrition-diet-planning">Nutrition & Diet Planning</a></li>
-                                    <li><a href="packages.html">Explore All Programs...</a></li>
+                                    <li><a href="#weight-loss-program" data-en="Weight Loss Program" data-am="የሰውነት ክብደት መቀነስ ፕሮግራም">Weight Loss Program</a></li>
+                                    <li><a href="#body-composition" data-en="Body Composition" data-am="የሰውነት ቅንብር">Body Composition</a></li>
+                                    <li><a href="#bodybuilding-program" data-en="Bodybuilding Program" data-am="የጡንቻ ግንባታ ፕሮግራም">Bodybuilding Program</a></li>
+                                    <li><a href="#posing-coaching" data-en="Posing Coaching" data-am="ፖዚንግ ማሰልጠኛ">Posing Coaching</a></li>
+                                    <li><a href="#home-workout-programs" data-en="Home Workout Programs" data-am="የቤት ስልጠና ፕሮግራሞች">Home Workout Programs</a></li>
+                                    <li><a href="#nutrition-diet-planning" data-en="Nutrition & Diet Planning" data-am="አመጋገብ እና አመጋገብ እቅድ">Nutrition & Diet Planning</a></li>
+                                    <li><a href="packages.html" data-en="Explore All Programs..." data-am="ሁሉንም ፕሮግራሞች ያስሱ...">Explore All Programs...</a></li>
                                 </ul>
                             </div>
-                            <!-- Footer Links End -->
                         </div>
-                        <!-- Footer Links Box End -->
                     </div>
-                    <!-- Footer Content Box End -->
                 </div>
 
                 <div class="col-lg-12">
-                    <!-- Footer Copyright Text Start -->
                     <div class="footer-copyright-text">
                         <p>Copyright © 2026 All Rights Reserved.</p>
                     </div>
-                    <!-- Footer Copyright Text End -->
                 </div>
             </div>
         </div>
@@ -332,6 +329,9 @@
     <script src="js/wow.min.js"></script>
     <!-- Main Custom js file -->
     <script src="js/function.js"></script>
+    
+    <!-- Language Script -->
+    <script src="js/language.js"></script>
 
     <!-- Contact Form Handler -->
     <script type="module">

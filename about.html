@@ -2,112 +2,92 @@
 <html lang="zxx">
 
 <head>
-	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="Awaiken">
-	<!-- Page Title -->
-    <title>AD Wellness Center</title>
+	<title>AD Wellness Center</title>
 
-	<!-- Favicon Icon -->
+	<!-- Favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
-    <!-- Google Fonts Css-->
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap" rel="stylesheet">
-    <!-- Custom Fonts Css-->
-	<link href="css/fonts.css" rel="stylesheet" media="screen">
-	<!-- Bootstrap Css -->
-	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<!-- SlickNav Css -->
-	<link href="css/slicknav.min.css" rel="stylesheet">
-	<!-- Swiper Css -->
-	<link rel="stylesheet" href="css/swiper-bundle.min.css">
-	<!-- Font Awesome Icon Css-->
-	<link href="css/all.min.css" rel="stylesheet" media="screen">
-	<!-- Animated Css -->
-	<link href="css/animate.css" rel="stylesheet">
-    <!-- Magnific Popup Core Css File -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<!-- Mouse Cursor Css File -->
-	<link rel="stylesheet" href="css/mousecursor.css">
-	<!-- Main Custom Css -->
-	<link href="css/custom.css" rel="stylesheet" media="screen">
-    
-    <!-- Gallery style -->
-    <link rel="stylesheet" href="css/gallery.css">
-    
-	<!-- Auth Scripts -->
-    <script type="module" src="js/auth.js" defer></script>
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+	<link rel="manifest" href="/favicon/site.webmanifest">
 
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans+Ethiopic:wght@400;500;700&display=swap" rel="stylesheet">
+
+	<link href="css/fonts.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/slicknav.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/swiper-bundle.min.css">
+	<link href="css/all.min.css" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="css/mousecursor.css">
+	<link href="css/custom.css" rel="stylesheet">
+    
+	<script type="module" src="js/auth.js" defer></script>
 </head>
 <body>
-
-    <!-- Preloader Start -->
-	<!-- <div class="preloader">
-		<div class="loading-container">
-			<div class="loading"></div>
-			<div id="loading-icon"><img src="images/loader.svg" alt=""></div>
-		</div>
-	</div> -->
-	<!-- Preloader End -->
 
     <!-- Header Start -->
 	<header class="main-header">
 		<div class="header-sticky">
 			<nav class="navbar navbar-expand-lg">
 				<div class="container">
-					<!-- Logo Start -->
 					<a class="navbar-brand" href="index.html">
 						<img src="images/logo.png" alt="Logo">
 					</a>
-					<!-- Logo End -->
 
-                    <!-- Main Menu Start -->
                     <div class="collapse navbar-collapse main-menu">
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto" id="menu">
-                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="profile.html">My Profile</a></li>
-                                <li class="nav-item"><a class="nav-link" href="dashboard.html">My Dashboard</a></li>
-                                <li class="nav-item"><a class="nav-link" href="packages.html">Packages</a></li>
-                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="index.html" data-en="Home" data-am="መነሻ">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="profile.html" data-en="My Profile" data-am="የእኔ መግለጫ">My Profile</a></li>
+                                <li class="nav-item"><a class="nav-link" href="dashboard.html" data-en="My Dashboard" data-am="ዳሽቦርድ">My Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link" href="packages.html" data-en="Packages" data-am="ፓኬጆች">Packages</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact.html" data-en="Contact Us" data-am="ያግኙን">Contact Us</a></li>
                             </ul>
                         </div>
                         
-                        <!-- Header Btn Start -->
-                        <div class="header-btn">
-                            <button id="login-btn" onclick="login()" class="btn-default">Login</button>
-                            <button id="logout-btn" onclick="logout()" class="btn-default" style="display:none;">Logout</button>
+                        <div class="header-btn d-flex align-items-center gap-2">
+                            <button id="login-btn" onclick="login()" class="btn-default" data-en="Login" data-am="ግባ">Login</button>
+                            <button id="logout-btn" onclick="logout()" class="btn-default" style="display:none;" data-en="Logout" data-am="ውጣ">Logout</button>
                             <div id="user-info" style="display:inline-block; margin-left:10px; color: white; font-weight: 500;"></div>
+                            
+                            <!-- Desktop Language -->
+                            <div class="language-switcher d-none d-lg-flex">
+                                <button id="lang-en" onclick="switchLanguage('en')" class="btn btn-sm btn-outline-light active">EN</button>
+                                <button id="lang-am" onclick="switchLanguage('am')" class="btn btn-sm btn-outline-light">አማ</button>
+                            </div>
                         </div>
-                        <!-- Header Btn End -->
                     </div>
-					<!-- Main Menu End -->
-					<div class="navbar-toggle"></div>
-				</div>
-			</nav>
-			<div class="responsive-menu"></div>
-		</div>
-	</header>
-	<!-- Header End -->
+
+                    <!-- Mobile Language + Hamburger -->
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="language-switcher d-lg-none">
+                            <button id="lang-en-mobile" onclick="switchLanguage('en')" class="btn btn-sm btn-outline-light active">EN</button>
+                            <button id="lang-am-mobile" onclick="switchLanguage('am')" class="btn btn-sm btn-outline-light">አማ</button>
+                        </div>
+                        <div class="navbar-toggle"></div>
+                    </div>
+                </div>
+            </nav>
+            <div class="responsive-menu"></div>
+        </div>
+    </header>
+    <!-- Header End -->
 
     <!-- Page Header Section Start -->
     <div class="page-header bg-section dark-section parallaxie">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Page Header Box Start -->
                     <div class="page-header-box">
-                        <h1 class="text-anime-style-3" data-cursor="-opaque">About Us</h1>
+                        <h1 class="text-anime-style-3" data-cursor="-opaque" 
+                            data-en="About Us" 
+                            data-am="ስለ እኛ">About Us</h1>
                     </div>
-                    <!-- Page Header Box End -->
                 </div>
             </div>
         </div>
@@ -118,176 +98,156 @@
     <div class="about-us">
         <div class="container">
             <div class="row align-items-center">
+
+                <!-- Coach Amanuel -->
                 <div class="col-xl-6">
-                    <!-- About US Image Box Start -->
                     <div class="about-us-image-box wow fadeInUp">
-                        <!-- About US Image Box 1 Start -->
                         <div class="about-us-image-box-1">
-                            <!-- About Us Image Start -->
                             <div class="about-us-image">
                                 <figure class="image-anime">
                                     <img src="images/trainers-01.jpg" alt="Coach Amanuel">
                                 </figure>
                             </div>
-                            <!-- About Us Image End -->
                         </div>
-                        <!-- About US Image Box 1 End -->
-
-                        <!-- About US Image Box 2 Start -->
                         <div class="about-us-image-box-2" style="margin-bottom: -80px;">
-                            <!-- About Us Image Start -->
                             <div class="about-us-image">
                                 <figure class="image-anime">
                                     <img src="images/trainers-001.jpg" alt="Coach Amanuel">
                                 </figure>
                             </div>
-                            <!-- About Us Image End -->
                         </div>
-                        <!-- About US Image Box 2 End -->
                     </div>
-                    <!-- About Us Image Box End -->
                 </div>
 
                 <div class="col-xl-6">
-                    <!-- About Us Content Box Start -->
                     <div class="about-us-content-box">
-                        <!-- Section Title Start -->
                         <div class="section-title">
-                            <span class="section-sub-title wow fadeInUp">About Us</span>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Coach Amanuel – Personal Trainer & Fitness Instructor</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">With over five years of hands-on experience in the fitness industry, I specialize in helping individuals transform their bodies through structured, realistic, and results-driven training. My approach is built around understanding each client’s unique needs and creating personalized workout programs that are both effective and sustainable.</p>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">I’ve worked with a wide range of clients—from beginners looking to build confidence in the gym to experienced individuals aiming to break plateaus. My expertise includes bodybuilding, weight loss, strength training, and pre- and post-rehabilitation support, ensuring that every client trains safely while progressing toward their goals.</p>
+                            <span class="section-sub-title wow fadeInUp" 
+                                  data-en="About Us" 
+                                  data-am="ስለ እኛ">About Us</span>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque" 
+                                data-en="Coach Amanuel – Personal Trainer & Fitness Instructor"
+                                data-am="አሰልጣኝ አማኑኤል – የግል አሰልጣኝ እና የአካል ብቃት አስተማሪ">
+                                Coach Amanuel – Personal Trainer & Fitness Instructor
+                            </h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s" 
+                               data-en="With over five years of hands-on experience in the fitness industry, I specialize in helping individuals transform their bodies through structured, realistic, and results-driven training." 
+                               data-am="በአካል ብቃት ኢንዱስትሪ ውስጥ ከአምስት ዓመታት በላይ ተግባራዊ ልምድ አለኝ። በተዋቀረ፣ ተጨባጭ እና ውጤት ያተኮረ ስልጠና ሰዎች ሰውነታቸውን እንዲለውጡ እረዳለሁ።">
+                               With over five years of hands-on experience...
+                            </p>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s" 
+                               data-en="I’ve worked with a wide range of clients—from beginners to experienced individuals." 
+                               data-am="ከጀማሪዎች እስከ ልምድ ያላቸው ግለሰቦች ድረስ ብዙ ደንበኞችን ሰርቻለሁ።">
+                               I’ve worked with a wide range of clients...
+                            </p>
                         </div>
-                        <!-- Section Title End -->
 
-                        <!-- About Us Body Start -->
                         <div class="about-us-body wow fadeInUp" data-wow-delay="0.6s">
-                            <!-- About Us Body list Start -->
                             <div class="about-us-body-list">
-                                    <h3 style="margin-bottom: 15px;">Certifications</h3>
+                                <h3 data-en="Certifications" data-am="የምስክር ወረቀቶች">Certifications</h3>
                                 <ul>
-                                    <li>2nd level CPT</li>
-                                    <li>Fitness Instructor & Fitness Management</li>
-                                    <li>Physiotherapy and Rehabilitation Guidance</li>
+                                    <li data-en="2nd level CPT" data-am="2ኛ ደረጃ CPT">2nd level CPT</li>
+                                    <li data-en="Fitness Instructor & Fitness Management" data-am="የአካል ብቃት አስተማሪ እና አስተዳደር">Fitness Instructor & Fitness Management</li>
+                                    <li data-en="Physiotherapy and Rehabilitation Guidance" data-am="ፊዚዮቴራፒ እና ማገገሚያ መመሪያ">Physiotherapy and Rehabilitation Guidance</li>
                                 </ul>
                             </div>
-                            <!-- About Us Body list End -->
                         </div>
-                        <!-- About Us Body End -->
 
-                        <!-- What We Content Footer Start -->
                         <div class="what-we-content-footer-gold wow fadeInUp" data-wow-delay="0.8s">
                             <div class="about-us-body-list">
-                                <h3 style="margin-bottom: 15px;">Get In Touch</h3>
+                                <h3 data-en="Get In Touch" data-am="ያግኙን">Get In Touch</h3>
                             </div>
 
-                            <!-- What We Contact Box Start -->
                             <div class="what-we-contact-box-gold">
                                 <div class="icon-box">
                                     <img src="images/icon-headphone-primary.svg" alt="">
                                 </div>
                                 <div class="what-we-contact-content-gold">
-                                    <h3>Phone Number</h3>
+                                    <h3 data-en="Phone Number" data-am="ስልክ ቁጥር">Phone Number</h3>
                                     <p><a href="tel:+251900462431">+(251) 90-046-2431</a></p>
                                 </div>
                             </div>
-                            
+
                             <div class="what-we-content-btn-gold">
-                                <a class="btn-default" href="https://t.me/Thegymera"><i class="fa-regular fa-paper-plane"></i> Telegram</a>
-                                <a class="btn-default" href="https://www.instagram.com/___.amanu"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                                <a class="btn-default" href="https://t.me/Thegymera" data-en="Telegram" data-am="ቴሌግራም"><i class="fa-regular fa-paper-plane"></i> Telegram</a>
+                                <a class="btn-default" href="https://www.instagram.com/___.amanu" data-en="Instagram" data-am="ኢንስታግራም"><i class="fa-brands fa-instagram"></i> Instagram</a>
                             </div>
-                            <!-- Our Trainers Contact Box End -->
                         </div>
-                        <!-- Our Trainers Content Footer End -->
                     </div>
-                    <!-- About Us Content Box End -->
                 </div>
-                <!-- Aman section end -->
 
-                <!-- Dagi section start -->
+                <!-- Coach Dagmawi -->
                 <div class="col-xl-6" style="margin-top: 100px;">
-                    <!-- About Us Content Box Start -->
                     <div class="about-us-content-box">
-                        <!-- Section Title Start -->
                         <div class="section-title">
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Dagmawi Yohannes – Fitness Coach & Nutrition Expert</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">I believe fitness doesn’t have to be complicated to work it just needs to be consistent, structured, and right for you. As a certified fitness coach with over two years of experience, I focus on helping clients build strength, lose fat, and stay consistent without overwhelming them.</p>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">I specialize in functional fitness, strength training, and basic conditioning helping clients improve performance in everyday life, not just in the gym. I also emphasize proper form and injury prevention, making sure every movement is done safely and efficiently.</p>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque" 
+                                data-en="Dagmawi Yohannes – Fitness Coach & Nutrition Expert"
+                                data-am="ዳግማዊ ዮሐንስ – የአካል ብቃት አሰልጣኝ እና የአመጋገብ ባለሙያ">
+                                Dagmawi Yohannes – Fitness Coach & Nutrition Expert
+                            </h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s" 
+                               data-en="I believe fitness doesn’t have to be complicated — it just needs to be consistent, structured, and right for you." 
+                               data-am="አካል ብቃት ውስብስብ መሆን አያስፈልገውም ብዬ አምናለሁ — ቋሚ፣ የተዋቀረ እና ለአንተ ተስማሚ መሆን ብቻ ነው የሚያስፈልገው።">
+                               I believe fitness doesn’t have to be complicated...
+                            </p>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s" 
+                               data-en="I specialize in functional fitness, strength training, and basic conditioning." 
+                               data-am="ተግባራዊ አካል ብቃት፣ ጥንካሬ ስልጠና እና መሠረታዊ ማጠናከሪያ ላይ ያተኩራለሁ።">
+                               I specialize in functional fitness...
+                            </p>
                         </div>
-                        <!-- Section Title End -->
 
-                        <!-- About Us Body Start -->
                         <div class="about-us-body wow fadeInUp" data-wow-delay="0.6s">
-                            <!-- About Us Body list Start -->
                             <div class="about-us-body-list">
-                                    <h3 style="margin-bottom: 15px;">Certifications</h3>
+                                <h3 data-en="Certifications" data-am="የምስክር ወረቀቶች">Certifications</h3>
                                 <ul>
-                                    <li>ISSA CPR and AED Certification</li>
-                                    <li>Personal Physical Fitness Trainer Certificate (Spine Consultancy - Consultation & Physical)</li>
-                                    <li>Certified Personal Trainer (International Sports Sciences Association — ISSA)</li>
-                                    <li>Nutrition Coach (Intenational Sports Sciences Association — ISSA)</li>
+                                    <li data-en="ISSA CPR and AED Certification" data-am="ISSA CPR እና AED ምስክር ወረቀት">ISSA CPR and AED Certification</li>
+                                    <li data-en="Certified Personal Trainer (ISSA)" data-am="የተረጋገጠ የግል አሰልጣኝ (ISSA)">Certified Personal Trainer (ISSA)</li>
+                                    <li data-en="Nutrition Coach (ISSA)" data-am="የአመጋገብ አሰልጣኝ (ISSA)">Nutrition Coach (ISSA)</li>
                                 </ul>
                             </div>
-                            <!-- About Us Body list End -->
                         </div>
-                        <!-- About Us Body End -->
-                        
-                        <!-- What We Content Footer Start -->
+
                         <div class="what-we-content-footer-gold wow fadeInUp" data-wow-delay="0.8s">
                             <div class="about-us-body-list">
-                                <h3 style="margin-bottom: 15px;">Get In Touch</h3>
+                                <h3 data-en="Get In Touch" data-am="ያግኙን">Get In Touch</h3>
                             </div>
-                            
-                            <!-- What We Contact Box Start -->
                             <div class="what-we-contact-box-gold">
                                 <div class="icon-box">
                                     <img src="images/icon-headphone-primary.svg" alt="">
                                 </div>
                                 <div class="what-we-contact-content-gold">
-                                    <h3>Phone Number</h3>
+                                    <h3 data-en="Phone Number" data-am="ስልክ ቁጥር">Phone Number</h3>
                                     <p><a href="tel:+251973106760">+(251) 97-310-6760</a></p>
                                 </div>
                             </div>
                             <div class="what-we-content-btn-gold">
-                                <a class="btn-default" href="https://t.me/dagiyo60"><i class="fa-regular fa-paper-plane"></i> Telegram</a>
-                                <a class="btn-default" href="https://www.instagram.com/dagi_dxd"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                                <a class="btn-default" href="https://t.me/dagiyo60" data-en="Telegram" data-am="ቴሌግራም"><i class="fa-regular fa-paper-plane"></i> Telegram</a>
+                                <a class="btn-default" href="https://www.instagram.com/dagi_dxd" data-en="Instagram" data-am="ኢንስታግራም"><i class="fa-brands fa-instagram"></i> Instagram</a>
                             </div>
-                            <!-- Our Trainers Contact Box End -->
                         </div>
-                        <!-- Our Trainers Content Footer End -->
                     </div>
-                    <!-- About Us Content Box End -->
                 </div>
 
                 <div class="col-xl-6">
-                    <!-- About US Image Box Start -->
                     <div class="about-us-image-box wow fadeInUp">
-                        <!-- About US Image Box 1 Start -->
                         <div class="about-us-image-box-1">
-                            <!-- About Us Image Start -->
                             <div class="about-us-image">
                                 <figure class="image-anime">
                                     <img src="images/trainers-3.jpg" alt="Coach Dagmawi">
                                 </figure>
                             </div>
-                            <!-- About Us Image End -->
                         </div>
-                        <!-- About US Image Box 1 End -->
-
-                        <!-- About US Image Box 2 Start -->
                         <div class="about-us-image-box-2" style="margin-bottom: -80px;">
-                            <!-- About Us Image Start -->
                             <div class="about-us-image">
                                 <figure class="image-anime">
                                     <img src="images/trainers-002.jpg" alt="Coach Dagmawi">
                                 </figure>
                             </div>
-                            <!-- About Us Image End -->
                         </div>
-                        <!-- About US Image Box 2 End -->
                     </div>
-                    <!-- About Us Image Box End -->
                 </div>
+
             </div>
         </div>
     </div>
@@ -300,12 +260,19 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title section-title-center">
-                        <span class="section-sub-title">Our Approach</span>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">Where science based training meets real world results</h2>
+                        <span class="section-sub-title wow fadeInUp" 
+                              data-en="Our Approach" 
+                              data-am="የእኛ አቀራረብ">Our Approach</span>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque" 
+                            data-en="Where science based training meets real world results"
+                            data-am="ሳይንስ ላይ የተመሰረተ ስልጠና እውነተኛ የአለም ውጤት የሚገናኝበት">
+                            Where science based training meets real world results
+                        </h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-6">
                     <!-- Our Approach Image Start -->
@@ -320,41 +287,47 @@
                 <div class="col-lg-6">
                     <!-- Our Approach List Start -->
                     <div class="our-approach-list">
-                        <!-- Our Approach Item Start -->
+                        <!-- Mission -->
                         <div class="our-approach-item wow fadeInUp">
                             <div class="icon-box">
                                 <img src="images/icon-our-approach-1.svg" alt="">
                             </div>
                             <div class="our-approach-item-content">
-                                <h3>Our Mission</h3>
-                                <p>Our mission is to motivate, guide & support every member on their fitness journey through structured workouts.</p>
+                                <h3 data-en="Our Mission" data-am="ተልእኳችን">Our Mission</h3>
+                                <p data-en="Our mission is to motivate, guide & support every member on their fitness journey through structured workouts." 
+                                   data-am="ተልእኳችን በተዋቀሩ ስልጠናዎች እያንዳንዱን አባል በአካል ብቃት ጉዞው ላይ ማነሳሳት፣ መመራት እና መደገፍ ነው።">
+                                   Our mission is to motivate, guide & support every member...
+                                </p>
                             </div>
                         </div>
-                        <!-- Our Approach Item End -->
 
-                        <!-- Our Approach Item Start -->
+                        <!-- Vision -->
                         <div class="our-approach-item wow fadeInUp" data-wow-delay="0.2s">
                             <div class="icon-box">
                                 <img src="images/icon-our-approach-2.svg" alt="">
                             </div>
                             <div class="our-approach-item-content">
-                                <h3>Our Vision</h3>
-                                <p>Our vision is to become a trusted fitness destination that transforms lives through smart training, expert coaching.</p>
+                                <h3 data-en="Our Vision" data-am="ራዕያችን">Our Vision</h3>
+                                <p data-en="Our vision is to become a trusted fitness destination that transforms lives through smart training, expert coaching." 
+                                   data-am="ራዕያችን በብልህ ስልጠና እና ባለሙያ ማሰልጠኛ ሕይወትን የሚለውጥ አመኔታ የሚገባው የአካል ብቃት መዳረሻ መሆን ነው።">
+                                   Our vision is to become a trusted fitness destination...
+                                </p>
                             </div>
                         </div>
-                        <!-- Our Approach Item End -->
 
-                        <!-- Our Approach Item Start -->
+                        <!-- Value -->
                         <div class="our-approach-item wow fadeInUp" data-wow-delay="0.4s">
                             <div class="icon-box">
                                 <img src="images/icon-our-approach-3.svg" alt="">
                             </div>
                             <div class="our-approach-item-content">
-                                <h3>Our Value</h3>
-                                <p>Our values center on smart training, expert support, and a community driven approach to lasting fitness success.</p>
+                                <h3 data-en="Our Value" data-am="እሴታችን">Our Value</h3>
+                                <p data-en="Our values center on smart training, expert support, and a community driven approach to lasting fitness success." 
+                                   data-am="እሴታችን በብልህ ስልጠና፣ ባለሙያ ድጋፍ እና በማህበረሰብ ላይ የተመሰረተ ዘላቂ አካል ብቃት ስኬት ላይ ያተኩራል።">
+                                   Our values center on smart training, expert support...
+                                </p>
                             </div>
                         </div>
-                        <!-- Our Approach Item End -->
                     </div>
                     <!-- Our Approach List End -->
                 </div>
@@ -373,8 +346,14 @@
                     <div class="intro-video-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <span class="section-sub-title wow fadeInUp">Watch Our Video</span>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">See how we train, support, & inspire our members</h2>
+                            <span class="section-sub-title wow fadeInUp" 
+                                  data-en="Watch Our Video" 
+                                  data-am="ቪዲዮችን ተመልከት">Watch Our Video</span>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque" 
+                                data-en="See how we train, support, & inspire our members"
+                                data-am="እኛ አባላቶቻችንን እንዴት እናሰለጥናለን፣ እንዴት እንደግፋለን እና እንዴት እናነሳሳለን ተመልከት">
+                                See how we train, support, & inspire our members
+                            </h2>
                         </div>
                         <!-- Section Title End -->
                          
@@ -383,7 +362,7 @@
                             <a href="images/group dagi-1.mp4" class="popup-video" data-cursor-text="Play">
                                 <i class="fa-solid fa-play"></i>
                             </a>
-                            <span>Watch Video</span>
+                            <span data-en="Watch Video" data-am="ቪዲዮ ተመልከት">Watch Video</span>
                         </div>
                         <!-- Video Play Button End -->
                     </div>
@@ -405,92 +384,102 @@
         <div class="container">
             <div class="row section-row">
                 <div class="col-lg-12">
-                    <!-- Section Title Start -->
                     <div class="section-title section-title-center">
-                        <span class="section-sub-title wow fadeInUp">How It Works</span>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">A smart approach to training, progress, and wellness</h2>
+                        <span class="section-sub-title wow fadeInUp" 
+                              data-en="How It Works" 
+                              data-am="እንዴት ነው የሚሰራው">How It Works</span>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque" 
+                            data-en="A smart approach to training, progress, and wellness"
+                            data-am="ለስልጠና፣ ለእድገት እና ለደህንነት ብልህ አቀራረብ">
+                            A smart approach to training, progress, and wellness
+                        </h2>
                     </div>
-                    <!-- Section Title End -->
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- How Work Items List Start -->
                     <div class="how-work-items-list">
-                        <!-- How Work Item Start -->
+
+                        <!-- Step 1 -->
                         <div class="how-work-item wow fadeInUp">
                             <div class="how-work-item-image">
                                 <figure class="image-anime">
                                     <img src="images/handshake.jpg" alt="">
                                 </figure>
                                 <div class="how-work-item-step">
-                                    <p>Step 01</p>
+                                    <p data-en="Step 01" data-am="ደረጃ 01">Step 01</p>
                                 </div>
                             </div>
                             <div class="how-work-item-body">
                                 <div class="how-work-item-content">
-                                    <h3>Join AD Wellness Center</h3>
-                                    <p>AD Wellness Center offers advanced training, expert support, and a fitness experience.</p>
+                                    <h3 data-en="Join AD Wellness Center" data-am="ወደ AD Wellness Center ተቀላቀል">Join AD Wellness Center</h3>
+                                    <p data-en="AD Wellness Center offers advanced training, expert support, and a fitness experience." 
+                                       data-am="AD Wellness Center የላቀ ስልጠና፣ ባለሙያ ድጋፍ እና የአካል ብቃት ልምድ ይሰጣል።">
+                                       AD Wellness Center offers advanced training...
+                                    </p>
                                 </div>
                                 <div class="how-work-item-list">
                                     <ul>
-                                        <li>Choose the membership plan that fits</li>
+                                        <li data-en="Choose the membership plan that fits" data-am="ለእርስዎ የሚስማማውን አባልነት እቅድ ይምረጡ">Choose the membership plan that fits</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <!-- How Work Item End -->
 
-                        <!-- How Work Item Start -->
+                        <!-- Step 2 -->
                         <div class="how-work-item wow fadeInUp" data-wow-delay="0.2s">
                             <div class="how-work-item-image">
                                 <figure class="image-anime">
                                     <img src="images/goalsetting.png" alt="">
                                 </figure>
                                 <div class="how-work-item-step">
-                                    <p>Step 02</p>
+                                    <p data-en="Step 02" data-am="ደረጃ 02">Step 02</p>
                                 </div>
                             </div>
                             <div class="how-work-item-body">
                                 <div class="how-work-item-content">
-                                    <h3>Assessment & Goal Setting</h3>
-                                    <p>Our gym environment is built to help you push limits with confidence.</p>
+                                    <h3 data-en="Assessment & Goal Setting" data-am="ግምገማ እና ግብ ማውጣት">Assessment & Goal Setting</h3>
+                                    <p data-en="Our gym environment is built to help you push limits with confidence." 
+                                       data-am="ጂማችን በተማማኝነት ገደቦችን እንድትገፋ የተገነባ ነው።">
+                                       Our gym environment is built to help you push limits...
+                                    </p>
                                 </div>
                                 <div class="how-work-item-list">
                                     <ul>
-                                        <li>Meet with certified trainers evaluate</li>
+                                        <li data-en="Meet with certified trainers" data-am="ከተረጋገጡ አሰልጣኞች ጋር ተገናኝ">Meet with certified trainers</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <!-- How Work Item End -->
 
-                        <!-- How Work Item Start -->
+                        <!-- Step 3 -->
                         <div class="how-work-item wow fadeInUp" data-wow-delay="0.4s">
                             <div class="how-work-item-image">
                                 <figure class="image-anime">
                                     <img src="images/personalized.png" alt="">
                                 </figure>
                                 <div class="how-work-item-step">
-                                    <p>Step 03</p>
+                                    <p data-en="Step 03" data-am="ደረጃ 03">Step 03</p>
                                 </div>
                             </div>
                             <div class="how-work-item-body">
                                 <div class="how-work-item-content">
-                                    <h3>Personalized Training</h3>
-                                    <p>Our personalized training programs are designed around your unique fitness goals.</p>
+                                    <h3 data-en="Personalized Training" data-am="የተበጀ ስልጠና">Personalized Training</h3>
+                                    <p data-en="Our personalized training programs are designed around your unique fitness goals." 
+                                       data-am="የተበጀ ስልጠና ፕሮግራሞቻችን ለእርስዎ ልዩ አካል ብቃት ግቦች የተዘጋጁ ናቸው።">
+                                       Our personalized training programs...
+                                    </p>
                                 </div>
                                 <div class="how-work-item-list">
                                     <ul>
-                                        <li>Workout plans tailored to your fitness</li>
+                                        <li data-en="Workout plans tailored to your fitness" data-am="ለአካል ብቃትዎ የተበጀ የስልጠና እቅዶች">Workout plans tailored to your fitness</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <!-- How Work Item End -->
+
                     </div>
-                    <!-- How Work Items List End -->
                 </div>
             </div>
         </div>
@@ -504,125 +493,139 @@
                 <div class="col-xl-6">
                     <!-- Faqs Image Box Start -->
                     <div class="faqs-image-box-gold">
-                        <!-- Faqs Image Start -->
                         <div class="faqs-img-gold">
                             <figure class="image-anime">
                                 <img src="images/faqs-image-gold.jpg" alt="">
                             </figure>
                         </div>
-                        <!-- Faqs Image End -->
 
-                        <!-- Faqs CTA Box Start -->
                         <div class="faq-cta-box-gold">
-                            <!-- Faqs CTA Content Start -->
                             <div class="faqs-cta-content-gold">
-                                <h3>Got any questions?</h3>
-                                <p>Feel free to ask us anything about our fitness programs or services.</p>
+                                <h3 data-en="Got any questions?" data-am="ማንኛውም ጥያቄ አለህ?">Got any questions?</h3>
+                                <p data-en="Feel free to ask us anything about our fitness programs or services." 
+                                   data-am="ስለ አካል ብቃት ፕሮግራሞቻችን ወይም አገልግሎቶቻችን ማንኛውንም ነገር መጠየቅ ይችላሉ።">
+                                   Feel free to ask us anything about our fitness programs or services.
+                                </p>
                             </div>
-                            <!-- Faqs CTA Content End -->
-                            
-                            <!-- Faqs CTA Button Start -->
                             <div class="faqs-cta-btn-gold">
-                                <a href="contact.html" class="btn-default btn-highlighted">Learn More</a>
+                                <a href="contact.html" class="btn-default btn-highlighted" 
+                                   data-en="Learn More" data-am="ተጨማሪ ላይ ይማሩ">Learn More</a>
                             </div>
-                            <!-- Faqs CTA Button End -->
                         </div>
-                        <!-- Faqs CTA Box End -->
                     </div>
-                    <!-- Faqs Image Box End -->
                 </div>
 
                 <div class="col-xl-6">
                     <!-- Faqs Content Start -->
                     <div class="faqs-content-gold">
-                        <!-- Section Title Start -->
                         <div class="section-title">
-                            <span class="section-sub-title wow fadeInUp">FAQ's</span>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Frequently Asked Questions</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Find answers to the most common questions about AD Wellness Center.</p>
+                            <span class="section-sub-title wow fadeInUp" 
+                                  data-en="FAQ's" 
+                                  data-am="ተደጋጋሚ ጥያቄዎች">FAQ's</span>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque" 
+                                data-en="Frequently Asked Questions"
+                                data-am="ብዙ ጊዜ የሚጠየቁ ጥያቄዎች">Frequently Asked Questions</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s" 
+                               data-en="Find answers to the most common questions about AD Wellness Center."
+                               data-am="ስለ AD Wellness Center ስለሚጠየቁ በጣም የተለመዱ ጥያቄዎች መልሶችን ያግኙ።">
+                               Find answers to the most common questions about AD Wellness Center.
+                            </p>
                         </div>
-                        <!-- Section Title End -->
 
                         <!-- FAQ Accordion Start -->
                         <div class="faq-accordion-gold" id="accordion">
-                            <!-- FAQ Item Start -->
+                            <!-- FAQ 1 -->
                             <div class="accordion-item-gold wow fadeInUp">
                                 <h2 class="accordion-header" id="heading1">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1"
+                                            data-en="Q1. Is this gym suitable for beginners?" 
+                                            data-am="Q1. ይህ ጂም ለጀማሪዎች ተስማሚ ነው?">
                                         Q1. Is this gym suitable for beginners?
                                     </button>
                                 </h2>
                                 <div id="collapse1" class="accordion-collapse collapse show" role="region" aria-labelledby="heading1" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
-                                        <p>Yes. It’s designed for beginners with certified trainers and beginner-friendly programs.</p>
+                                    <div class="accordion-body" 
+                                         data-en="Yes. It’s designed for beginners with certified trainers and beginner-friendly programs." 
+                                         data-am="አዎ። በተረጋገጡ አሰልጣኞች እና ለጀማሪዎች ተስማሚ በሆኑ ፕሮግራሞች የተዘጋጀ ነው።">
+                                        Yes. It’s designed for beginners with certified trainers and beginner-friendly programs.
                                     </div>
                                 </div>
                             </div>
-                            <!-- FAQ Item End -->
 
-                            <!-- FAQ Item Start -->
+                            <!-- FAQ 2 -->
                             <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.2s">
                                 <h2 class="accordion-header" id="heading2">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2"
+                                            data-en="Q2. Do you provide personal training?" 
+                                            data-am="Q2. የግል ስልጠና ትሰጣላችሁ?">
                                         Q2. Do you provide personal training?
                                     </button>
                                 </h2>
                                 <div id="collapse2" class="accordion-collapse collapse" role="region" aria-labelledby="heading2" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
-                                        <p>Yes, we offer certified personal trainers who provide one-on-one coaching tailored to your fitness goals.</p>
+                                    <div class="accordion-body" 
+                                         data-en="Yes, we offer certified personal trainers who provide one-on-one coaching tailored to your fitness goals." 
+                                         data-am="አዎ፣ ለአካል ብቃት ግቦችህ የተበጀ የግል-ለግል ስልጠና የሚሰጡ የተረጋገጡ የግል አሰልጣኞች አሉን።">
+                                        Yes, we offer certified personal trainers who provide one-on-one coaching tailored to your fitness goals.
                                     </div>
                                 </div>
                             </div>
-                            <!-- FAQ Item End -->
 
-                            <!-- FAQ Item Start -->
+                            <!-- FAQ 3 -->
                             <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.4s">
                                 <h2 class="accordion-header" id="heading3">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3"
+                                            data-en="Q3. What types of programs do you offer?" 
+                                            data-am="Q3. ምን አይነት ፕሮግራሞች ታቀርባላችሁ?">
                                         Q3. What types of programs do you offer?
                                     </button>
                                 </h2>
                                 <div id="collapse3" class="accordion-collapse collapse" role="region" aria-labelledby="heading3" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
-                                        <p>We offer a variety of fitness programs, including strength training, cardio, flexibility, and functional fitness.</p>
+                                    <div class="accordion-body" 
+                                         data-en="We offer a variety of fitness programs, including strength training, cardio, flexibility, and functional fitness." 
+                                         data-am="የጥንካሬ ስልጠና፣ ካርዲዮ፣ ተለዋዋጭነት እና ተግባራዊ አካል ብቃትን ጨምሮ የተለያዩ የአካል ብቃት ፕሮግራሞችን እናቀርባለን።">
+                                        We offer a variety of fitness programs, including strength training, cardio, flexibility, and functional fitness.
                                     </div>
                                 </div>
                             </div>
-                            <!-- FAQ Item End -->
 
-                            <!-- FAQ Item Start -->
+                            <!-- FAQ 4 -->
                             <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.6s">
                                 <h2 class="accordion-header" id="heading4">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4"
+                                            data-en="Q4. Are workout plans customized?" 
+                                            data-am="Q4. የስልጠና እቅዶች የተበጀዎች ናቸው?">
                                         Q4. Are workout plans customized?
                                     </button>
                                 </h2>
                                 <div id="collapse4" class="accordion-collapse collapse" role="region" aria-labelledby="heading4" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
-                                        <p>Yes, our workout plans are customized based on your individual fitness level, goals, and preferences.</p>
+                                    <div class="accordion-body" 
+                                         data-en="Yes, our workout plans are customized based on your individual fitness level, goals, and preferences." 
+                                         data-am="አዎ፣ የስልጠና እቅዶቻችን በግለሰብ የአካል ብቃት ደረጃ፣ ግቦች እና ምርጫዎች መሰረት የተበጀዎች ናቸው።">
+                                        Yes, our workout plans are customized based on your individual fitness level, goals, and preferences.
                                     </div>
                                 </div>
                             </div>
-                            <!-- FAQ Item End -->
 
-                            <!-- FAQ Item Start -->
+                            <!-- FAQ 5 -->
                             <div class="accordion-item-gold wow fadeInUp" data-wow-delay="0.8s">
                                 <h2 class="accordion-header" id="heading5">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5"
+                                            data-en="Q5. Do you offer nutrition or diet guidance?" 
+                                            data-am="Q5. የአመጋገብ ወይም አመጋገብ መመሪያ ትሰጣላችሁ?">
                                         Q5. Do you offer nutrition or diet guidance?
                                     </button>
                                 </h2>
                                 <div id="collapse5" class="accordion-collapse collapse" role="region" aria-labelledby="heading5" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
-                                        <p>Yes. Nutrition and diet guidance are offered alongside training services.</p>
+                                    <div class="accordion-body" 
+                                         data-en="Yes. Nutrition and diet guidance are offered alongside training services." 
+                                         data-am="አዎ። ከስልጠና አገልግሎቶች ጋር የአመጋገብ እና አመጋገብ መመሪያ ይሰጣል።">
+                                        Yes. Nutrition and diet guidance are offered alongside training services.
                                     </div>
                                 </div>
                             </div>
-                            <!-- FAQ Item End -->
                         </div>
                         <!-- FAQ Accordion End -->
                     </div>
-                    <!-- Faqs Content End -->
                 </div>
             </div>
         </div>
@@ -634,23 +637,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Footer Content Box Start -->
                     <div class="footer-content-box-gold">
-                        <!-- Footer Links Box Start -->
+                        <!-- Footer Links Box 1 -->
                         <div class="footer-links-box-gold">
-                            <!-- Footer Links Start -->
                             <div class="footer-links-gold">
-                                <h2>Quick Links</h2>
+                                <h2 data-en="Quick Links" data-am="ፈጣን ማገናኛዎች">Quick Links</h2>
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="packages.html">Packages</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="index.html" data-en="Home" data-am="መነሻ">Home</a></li>
+                                    <li><a href="about.html" data-en="About Us" data-am="ስለ እኛ">About Us</a></li>
+                                    <li><a href="packages.html" data-en="Packages" data-am="ፓኬጆች">Packages</a></li>
+                                    <li><a href="contact.html" data-en="Contact Us" data-am="ያግኙን">Contact Us</a></li>
                                 </ul>
                             </div>
-                            <!-- Footer Links End -->
 
-                            <!-- Footer Social Links Start -->
                             <div class="footer-social-links-gold">
                                 <ul>
                                     <li><a href="https://t.me/dagiyo60"><i class="fa-regular fa-paper-plane"></i></a></li>
@@ -659,52 +658,47 @@
                                     <li><a href="https://www.instagram.com/___.amanu"><i class="fa-brands fa-instagram"></i></a></li>
                                 </ul>
                             </div>
-                            <!-- Footer Social Links End -->
                         </div>
-                        <!-- Footer Links Box End -->
-                         
-                        <!-- About Footer Start -->
+
+                        <!-- About Footer -->
                         <div class="about-footer-gold">
                             <div class="footer-logo-gold">
                                 <img src="images/logo.svg" alt="">
                             </div>               
                             <div class="about-footer-content-gold">
-                                <p>We are a results-driven fitness center committed to helping individuals achieve strength, confidence, and healthier lifestyles.</p>
+                                <p data-en="We are a results-driven fitness center committed to helping individuals achieve strength, confidence, and healthier lifestyles." 
+                                   data-am="ውጤት ያተኮረ የአካል ብቃት ማእከል ነን። ግለሰቦች ጥንካሬ፣ በራስ መተማመን እና ጤናማ የአኗኗር ዘይቤ እንዲኖራቸው እንረዳለን።">
+                                   We are a results-driven fitness center committed to helping individuals achieve strength, confidence, and healthier lifestyles.
+                                </p>
                             </div>
                             <div class="faqs-cta-btn-gold">
-                                <a href="contact.html" class="btn-default btn-highlighted">Contact Us Now</a>
+                                <a href="contact.html" class="btn-default btn-highlighted" 
+                                   data-en="Contact Us Now" data-am="አሁን ያግኙን">Contact Us Now</a>
                             </div>         
                         </div>
-                        <!-- About Footer End -->
 
-                        <!-- Footer Links Box Start -->
+                        <!-- Footer Links Box 2 -->
                         <div class="footer-links-box-gold">
-                            <!-- Footer Links Start -->
                             <div class="footer-links-gold">
-                                <h2>Training Programs</h2>
+                                <h2 data-en="Training Programs" data-am="የስልጠና ፕሮግራሞች">Training Programs</h2>
                                 <ul>
-                                    <li><a href="#weight-loss-program">Weight Loss Program</a></li>
-                                    <li><a href="#body-composition">Body Composition</a></li>
-                                    <li><a href="#bodybuilding-program">Bodybuilding Program</a></li>
-                                    <li><a href="#posing-coaching">Posing Coaching</a></li>
-                                    <li><a href="#home-workout-programs">Home Workout Programs</a></li>
-                                    <li><a href="#nutrition-diet-planning">Nutrition & Diet Planning</a></li>
-                                    <li><a href="packages.html">Explore All Programs...</a></li>
+                                    <li><a href="#weight-loss-program" data-en="Weight Loss Program" data-am="የሰውነት ክብደት መቀነስ ፕሮግራም">Weight Loss Program</a></li>
+                                    <li><a href="#body-composition" data-en="Body Composition" data-am="የሰውነት ቅንብር">Body Composition</a></li>
+                                    <li><a href="#bodybuilding-program" data-en="Bodybuilding Program" data-am="የጡንቻ ግንባታ ፕሮግራም">Bodybuilding Program</a></li>
+                                    <li><a href="#posing-coaching" data-en="Posing Coaching" data-am="ፖዚንግ ማሰልጠኛ">Posing Coaching</a></li>
+                                    <li><a href="#home-workout-programs" data-en="Home Workout Programs" data-am="የቤት ስልጠና ፕሮግራሞች">Home Workout Programs</a></li>
+                                    <li><a href="#nutrition-diet-planning" data-en="Nutrition & Diet Planning" data-am="አመጋገብ እና አመጋገብ እቅድ">Nutrition & Diet Planning</a></li>
+                                    <li><a href="packages.html" data-en="Explore All Programs..." data-am="ሁሉንም ፕሮግራሞች ያስሱ...">Explore All Programs...</a></li>
                                 </ul>
                             </div>
-                            <!-- Footer Links End -->
                         </div>
-                        <!-- Footer Links Box End -->
                     </div>
-                    <!-- Footer Content Box End -->
                 </div>
 
                 <div class="col-lg-12">
-                    <!-- Footer Copyright Text Start -->
                     <div class="footer-copyright-text">
                         <p>Copyright © 2026 All Rights Reserved.</p>
                     </div>
-                    <!-- Footer Copyright Text End -->
                 </div>
             </div>
         </div>
