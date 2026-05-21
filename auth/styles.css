@@ -25,7 +25,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(190deg, #ff6600, #badbe2);
+    background: linear-gradient(190deg, #ddff00, #badbe2);
     z-index: 1;
     mix-blend-mode: screen;
     opacity: 100%;
@@ -57,7 +57,7 @@ section {
     font-size: 1.5em;
     margin-bottom: 20px;
     text-transform: uppercase;
-    border-bottom: 5px solid #ff6600;
+    border-bottom: 5px solid #ddff00;
     letter-spacing: 1px;
     display: inline-block;
     color: #001c2a;
@@ -88,16 +88,16 @@ section {
 }
 
 #submit {
-    color: white;
+    color: rgb(0, 0, 0);
     outline: none;
     cursor: pointer;
     border: none;
     font-weight: 500;
-    background-color: #ff6600;
+    background-color: #ddff00;
 }
 
 #submit:hover {
-    background-color: #cb5201;
+    background-color: #D5EB45;
 
 }
 
@@ -117,7 +117,7 @@ section {
 }
 
 .input p a {
-    color: #ff6600
+    color: #ddff00
 }
 
 .form h3 {
@@ -154,11 +154,11 @@ section {
 }
 
 .social-media li:hover {
-    background-color: #ff6600;
+    background-color: #ddff00;
 }
 
 .social-media li:active {
-    background-color: #ff6600;
+    background-color: #ddff00;
     transform: scale(0.9);
 }
 
