@@ -6,11 +6,19 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="Awaiken">
-	<!-- Page Title -->
-    <title>AD Wellness Center</title>
+	<meta name="description" content="AD Wellness Center offers expert fitness coaching, strength training, and wellness programs to help you build health, confidence, and real results in Addis Ababa, Ethiopia.">
+	<meta name="keywords" content="AD Wellness Center, fitness center, strength training, wellness programs, personal training, fitness coaching, healthy lifestyle, Addis Ababa, Ethiopia">
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+	
+    <!-- Page Title -->
+    <title>AD Wellness Center | Fitness, Strength & Wellness</title>
+	<meta property="og:title" content="AD Wellness Center | Fitness, Strength & Wellness">
+	<meta property="og:description" content="Explore expert fitness training, strength programs, and wellness support designed to help you feel stronger, healthier, and more confident.">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="/images/AD-Wellness-Center-Logo.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="AD Wellness Center | Fitness, Strength & Wellness">
+	<meta name="twitter:description" content="Expert fitness coaching, strength training, and wellness programs for healthier, stronger living in Addis Ababa, Ethiopia.">
 
 	<!-- Favicon Icon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
@@ -138,19 +146,19 @@
                     <div class="hero-image-gold">
                         <div class="hero-slider">
                             <figure>
-                                <img src="images/hero-image-gold-2.png" alt="">
+                                <img src="images/hero-image-gold-2.png" alt="AD Wellness Center fitness training and strength coaching banner">
                             </figure>
                             <figure>
-                                <img src="images/hero-image-gold.png" alt="">
+                                <img src="images/hero-image-gold.png" alt="AD Wellness Center wellness and fitness program showcase">
                             </figure>
                             <figure>
-                                <img src="images/hero-image-gold-2.png" alt="">
+                                <img src="images/hero-image-gold-2.png" alt="AD Wellness Center personal training and fitness results image">
                             </figure>
                             <figure>
-                                <img src="images/hero-image-gold.png" alt="">
+                                <img src="images/hero-image-gold.png" alt="AD Wellness Center modern gym and healthy lifestyle visuals">
                             </figure>
                             <figure>
-                                <img src="images/hero-image-gold-2.png" alt="">
+                                <img src="images/hero-image-gold-2.png" alt="AD Wellness Center training environment for fitness and wellness goals">
                             </figure>
                         </div>
                     </div>
@@ -928,23 +936,75 @@
             </div>
 
             <div class="vid-gallery" id="gallery">
-                <div class="card">
-                    <video src="images/group dagi.mp4" muted loop preload="metadata"></video>
-                    <div class="play-btn">▶</div>
-                </div>
-                <div class="card">
-                    <video src="images/group session aman.mp4" muted loop preload="metadata"></video>
-                    <div class="play-btn">▶</div>
-                </div>
-                <div class="card">
-                    <video src="images/group dagi-2.mp4" muted loop preload="metadata"></video>
-                    <div class="play-btn">▶</div>
-                </div>
-                <div class="card">
-                    <video src="images/group dagi-3.mp4" muted loop preload="metadata"></video>
-                    <div class="play-btn">▶</div>
-                </div>
-            </div>
+    <div class="card">
+        <video src="images/group dagi.mp4" muted loop preload="metadata"></video>
+        <div class="play-btn">▶</div>
+    </div>
+    <div class="card">
+        <video src="images/group session aman.mp4" muted loop preload="metadata"></video>
+        <div class="play-btn">▶</div>
+    </div>
+    <div class="card">
+        <video src="images/group dagi-2.mp4" muted loop preload="metadata"></video>
+        <div class="play-btn">▶</div>
+    </div>
+    <div class="card">
+        <video src="images/group dagi-3.mp4" muted loop preload="metadata"></video>
+        <div class="play-btn">▶</div>
+    </div>
+</div>
+
+<script>
+// Reliable Auto Thumbnail Generator
+document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('.vid-gallery video');
+
+    videos.forEach(video => {
+        let thumbnailGenerated = false;
+
+        // Try multiple events for better reliability
+        const tryGenerateThumbnail = () => {
+            if (thumbnailGenerated || video.readyState < 2) return;
+            
+            video.currentTime = 0.5; // Seek to 0.5 second (safer than 0.1)
+        };
+
+        video.addEventListener('loadedmetadata', tryGenerateThumbnail);
+        video.addEventListener('loadeddata', tryGenerateThumbnail);
+        video.addEventListener('canplay', tryGenerateThumbnail);
+
+        video.addEventListener('seeked', () => {
+            if (thumbnailGenerated) return;
+
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth || 640;
+                canvas.height = video.videoHeight || 360;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                // Set the poster
+                video.poster = canvas.toDataURL('image/jpeg', 0.85);
+                
+                thumbnailGenerated = true;
+                
+                // Reset video to beginning
+                video.currentTime = 0;
+            } catch (e) {
+                console.warn("Thumbnail generation failed for video:", video.src);
+            }
+        });
+
+        // Fallback: if nothing works after 3 seconds
+        setTimeout(() => {
+            if (!thumbnailGenerated && video.readyState > 0) {
+                tryGenerateThumbnail();
+            }
+        }, 3000);
+    });
+});
+</script>
 
             <div class="dots" id="dots"></div>
 
