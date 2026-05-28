@@ -9982,7 +9982,7 @@ header.main-header .header-sticky.active{
     font-size: 20px;
 	margin-bottom: 20px;
 }
-
+/* 
 .pricing-item-list-gold ul{
     list-style: none;
     margin: 0;
@@ -10028,7 +10028,7 @@ header.main-header .header-sticky.active{
 .pricing-item-list-gold ul ul li::before{
     display: none;
     content: none;
-}
+} */
 
 .pricing-item-btn-gold{
 	margin-top: 30px;
@@ -11263,10 +11263,6 @@ header.main-header .header-sticky.active{
         display: none !important;
     }
 }
-
-
-
-
 
 
 

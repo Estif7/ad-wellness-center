@@ -71,27 +71,31 @@
 .card:hover .overlay {
     opacity: 1;
 }
-
 /* Play Button */
-.play-btn {
+.vid-gallery .play-btn {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--accent);
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    font-size: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: 0.3s;
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255,255,255,0.8);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    pointer-events: none;
 }
 
-.card:hover .play-btn {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+.vid-gallery .card:hover .play-btn {
+    transform: translate(-50%, -50%) scale(1.15);
+    background: rgba(220, 20, 60, 0.85);
 }
 
 /* Modal */

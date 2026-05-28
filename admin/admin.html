@@ -6,6 +6,13 @@
     <title>Admin Dashboard - AD Wellness Center</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    
+	<!-- Favicon Icon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+
 <style>
         body { 
             font-family: 'DM Sans', sans-serif; 
@@ -37,7 +44,14 @@
             color: #555;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 769px) {
+            #contacts-section {
+                padding: 0 15px 15px 15px;
+            }
+        }
+
+
+        @media (max-width: 769px) {
             .sidebar {
                 position: fixed;
                 left: -280px;
@@ -96,12 +110,12 @@
         <a class="navbar-brand d-none d-md-block mb-4" href="/index.html">
             <img src="/images/logo.png" alt="Logo">
         </a>
-
         <ul class="nav flex-column">
             <li class="nav-item"><a href="/index.html" class="nav-link">🏠 Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link active" onclick="showSection('clients')">👥 Clients</a></li>
             <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('blog')">📝 Blog Posts</a></li>
             <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('contacts')">📞 Contacts</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" onclick="showSection('pricing')">💰 Pricing</a></li>
             <li class="nav-item mt-3"><a href="#" onclick="logout()" class="nav-link text-danger">🚪 Logout</a></li>
         </ul>
     </div>
@@ -132,9 +146,9 @@
         <!-- Blog Section -->
         <div id="blog-section" style="display: none;">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Blog Posts Management</h2>
+                <h2 class="mb-0" style="margin-top: 15px">Blog Posts Management</h2>
+                <span id="user-email-clients" class="fw-bold d-none d-md-inline"></span>
                 <div>
-                    <span id="user-email" class="me-3 fw-bold"></span>
                     <button onclick="newPost()" class="btn btn-danger">+ New Blog Post</button>
                 </div>
             </div>
@@ -147,10 +161,108 @@
             </table>
         </div>
 
+        <!-- OLD Pricing Section -->
+        <!-- <div id="pricing-section" style="display: none;">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Pricing Plans Management</h2>
+                <button onclick="addNewPricingPlan()" class="btn btn-danger">+ Add New Plan</button>
+            </div>
+            <div class="pricing-cards" id="pricing-cards"></div>
+        </div> -->
+        <!-- Pricing Edit Modal -->
+        <!-- <div class="modal fade" id="pricingEditModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Pricing Plan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="pricing-form">
+                            <input type="hidden" id="plan-id">
+                            <div class="mb-3">
+                                <label class="form-label">Plan Title</label>
+                                <input type="text" id="plan-title" class="form-control" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label">Price</label>
+                                    <input type="text" id="plan-price" class="form-control" placeholder="1,500 – 3,000 ETB" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Subtitle</label>
+                                    <input type="text" id="plan-subtitle" class="form-control" placeholder="Starter Programs">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Features (one per line)</label>
+                                <textarea id="plan-features" class="form-control" rows="12" placeholder="Weight Loss Program&#10;• 60 Days – 1,500 ETB&#10;• 90 Days – 3,000 ETB"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" onclick="savePricingPlan()" class="btn btn-danger">Save Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Pricing Section -->
+        <div id="pricing-section" style="display: none;">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mb-0" style="margin-top: 15px">Pricing Plans Management</h2>
+                    <button onclick="addNewPricingPlan()" class="btn btn-danger">+ Add New Plan</button>
+            </div>
+            <div class="pricing-cards" id="pricing-cards"></div>
+        </div>
+
+        <!-- Pricing Edit Modal -->
+        <div class="modal fade" id="pricingEditModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Pricing Plan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="pricing-form">
+                            <input type="hidden" id="plan-id">
+                            <div class="mb-3">
+                                <label>Plan Title</label>
+                                <input type="text" id="plan-title" class="form-control" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Price</label>
+                                    <input type="text" id="plan-price" class="form-control" placeholder="1,500 – 3,000 ETB" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Subtitle</label>
+                                    <input type="text" id="plan-subtitle" class="form-control" placeholder="Starter Programs">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label>Features (one per line)</label>
+                                <textarea id="plan-features" class="form-control" rows="12"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" onclick="savePricingPlan()" class="btn btn-danger">Save Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+
         <!-- Contacts Section -->
         <div id="contacts-section" style="display: none;">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Contact Messages</h2>
+                <h2 class="mb-0" style="margin-top: 15px">Contact Messages</h2>
                 <span id="user-email-contacts" class="fw-bold d-none d-md-inline"></span>
             </div>
             <input type="text" id="contact-search" class="form-control mb-3" placeholder="Search contacts..." onkeyup="filterContacts()">
@@ -165,6 +277,7 @@
             </div>
             <div class="contact-cards" id="contact-cards"></div>
         </div>
+
 
         <!-- Blog Section (unchanged) -->
         <div id="blog-section" style="display: none;">
@@ -357,16 +470,19 @@
         }
 
         const emailDisplay = `👤 ${user.email}`;
-        document.getElementById("user-email").textContent = emailDisplay;
-        document.getElementById("user-email-clients").textContent = emailDisplay;
-        document.getElementById("user-email-contacts").textContent = emailDisplay;
-        if (document.getElementById("user-email-mobile")) {
-            document.getElementById("user-email-mobile").textContent = user.email.split('@')[0];
-        }
+// Safe email updates
+        const ids = ["user-email", "user-email-clients", "user-email-contacts", "user-email-pricing"];
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = emailDisplay;
+        });
+        const mobile = document.getElementById("user-email-mobile");
+        if (mobile) mobile.textContent = user.email.split('@')[0];
 
         loadPosts();
         loadClients();
         loadContacts();
+        loadPricingPlans();
     });
 
     // Run mobile menu setup when DOM is ready
@@ -496,7 +612,6 @@
         });
     }
 
-    // ====================== CLIENTS SECTION ======================
     // ====================== CLIENTS SECTION ======================
 function loadClients() {
     const tbody = document.querySelector("#clients-table tbody");
@@ -839,10 +954,82 @@ function filterClients() {
         }
     }
 
+    // Pricing Functions
+    function loadPricingPlans() {
+        const container = document.getElementById("pricing-cards");
+        onSnapshot(collection(db, "pricingPlans"), (snapshot) => {
+            container.innerHTML = "";
+            if (snapshot.empty) {
+                container.innerHTML = `<div class="text-center p-5"><p>No pricing plans yet.</p><button onclick="addNewPricingPlan()" class="btn btn-danger">+ Add First Plan</button></div>`;
+                return;
+            }
+            snapshot.forEach(docSnap => {
+                const plan = docSnap.data();
+                container.innerHTML += `
+                    <div class="pricing-card">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <h5>${plan.title}</h5>
+                                <h6 class="text-primary">${plan.price}</h6>
+                                ${plan.subtitle ? `<small class="text-muted">${plan.subtitle}</small>` : ''}
+                            </div>
+                            <button onclick="editPricingPlan('${docSnap.id}')" class="btn btn-sm btn-outline-primary">Edit</button>
+                        </div>
+                        <ul class="small">${plan.features ? plan.features.map(f => `<li>${f}</li>`).join('') : ''}</ul>
+                    </div>`;
+            });
+        });
+    }
+
+    function addNewPricingPlan() {
+        document.getElementById("plan-id").value = "";
+        document.getElementById("plan-title").value = "";
+        document.getElementById("plan-price").value = "";
+        document.getElementById("plan-subtitle").value = "";
+        document.getElementById("plan-features").value = "";
+        new bootstrap.Modal(document.getElementById("pricingEditModal")).show();
+    }
+
+    async function editPricingPlan(id) {
+        const docSnap = await getDoc(doc(db, "pricingPlans", id));
+        if (!docSnap.exists()) return alert("Plan not found");
+        const plan = docSnap.data();
+        document.getElementById("plan-id").value = id;
+        document.getElementById("plan-title").value = plan.title || "";
+        document.getElementById("plan-price").value = plan.price || "";
+        document.getElementById("plan-subtitle").value = plan.subtitle || "";
+        document.getElementById("plan-features").value = plan.features ? plan.features.join("\n") : "";
+        new bootstrap.Modal(document.getElementById("pricingEditModal")).show();
+    }
+
+    async function savePricingPlan() {
+        const id = document.getElementById("plan-id").value;
+        const features = document.getElementById("plan-features").value.trim().split("\n").map(f => f.trim()).filter(Boolean);
+
+        const planData = {
+            title: document.getElementById("plan-title").value.trim(),
+            price: document.getElementById("plan-price").value.trim(),
+            subtitle: document.getElementById("plan-subtitle").value.trim(),
+            features: features,
+            updatedAt: new Date().toISOString()
+        };
+
+        try {
+            if (id) await updateDoc(doc(db, "pricingPlans", id), planData);
+            else await addDoc(collection(db, "pricingPlans"), planData);
+            bootstrap.Modal.getInstance(document.getElementById("pricingEditModal")).hide();
+            alert("✅ Saved successfully!");
+        } catch (e) {
+            alert("Error: " + e.message);
+        }
+    }
+
+
     function showSection(section) {
         document.getElementById("blog-section").style.display = section === 'blog' ? 'block' : 'none';
         document.getElementById("clients-section").style.display = section === 'clients' ? 'block' : 'none';
         document.getElementById("contacts-section").style.display = section === 'contacts' ? 'block' : 'none';
+        document.getElementById("pricing-section").style.display = section === 'pricing' ? 'block' : 'none';
     }
 
     // ====================== CONTACTS - NEW CARD VERSION ======================
@@ -948,6 +1135,10 @@ function filterClients() {
     window.filterContacts = filterContacts;
     window.deleteContact = deleteContact;
     window.filterClients = filterClients;
+
+    window.addNewPricingPlan = addNewPricingPlan;
+    window.editPricingPlan = editPricingPlan;
+    window.savePricingPlan = savePricingPlan;
 
     window.onload = () => {};
 

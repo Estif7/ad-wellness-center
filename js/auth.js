@@ -17,6 +17,58 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// ==================== DASHBOARD LINK HANDLER (Desktop + Mobile) ====================
+async function updateDashboardLinks(user) {
+    const desktopLink = document.querySelector('a.nav-link[href*="dashboard"]');
+    const mobileLink = document.querySelector('.slicknav_menu a[href*="dashboard"]');
+
+    if (!user) {
+        resetDashboardLinks(desktopLink, mobileLink);
+        return;
+    }
+
+    try {
+        const token = await user.getIdTokenResult();
+        const isAdmin = token.claims.admin === true;
+
+        if (isAdmin) {
+            // Admin Dashboard
+            if (desktopLink) {
+                desktopLink.textContent = "Admin Dashboard";
+                desktopLink.href = "/admin/admin.html";
+            }
+            if (mobileLink) {
+                mobileLink.textContent = "Admin Dashboard";
+                mobileLink.href = "/admin/admin.html";
+            }
+        } else {
+            // Regular User Dashboard
+            if (desktopLink) {
+                desktopLink.textContent = "My Dashboard";
+                desktopLink.href = "/dashboard.html";
+            }
+            if (mobileLink) {
+                mobileLink.textContent = "My Dashboard";
+                mobileLink.href = "/dashboard.html";
+            }
+        }
+    } catch (e) {
+        console.error("Error checking admin role:", e);
+    }
+}
+
+function resetDashboardLinks(desktopLink, mobileLink) {
+    if (desktopLink) {
+        desktopLink.textContent = "My Dashboard";
+        desktopLink.href = "/dashboard.html";
+    }
+    if (mobileLink) {
+        mobileLink.textContent = "My Dashboard";
+        mobileLink.href = "/dashboard.html";
+    }
+}
+
+// ==================== MENU HELPERS ====================
 function getOrCreateAboutMenuItem() {
     let aboutMenuItem = document.querySelector('a.nav-link[href*="/about"]')?.closest('li.nav-item');
     
@@ -29,7 +81,6 @@ function getOrCreateAboutMenuItem() {
             profileMenuItem.parentNode.insertBefore(aboutMenuItem, profileMenuItem);
         }
     }
-    
     return aboutMenuItem;
 }
 
@@ -37,8 +88,6 @@ function updateMainMenu(isLoggedIn) {
     const profileMenuItem = document.querySelector('a.nav-link[href*="/profile"]')?.closest('li.nav-item');
     const dashboardMenuItem = document.querySelector('a.nav-link[href*="/dashboard"]')?.closest('li.nav-item');
     const aboutMenuItem = getOrCreateAboutMenuItem();
-
-    console.log('updateMainMenu:', { isLoggedIn, profileMenuItem: !!profileMenuItem, dashboardMenuItem: !!dashboardMenuItem, aboutMenuItem: !!aboutMenuItem });
 
     if (profileMenuItem) profileMenuItem.style.display = isLoggedIn ? 'list-item' : 'none';
     if (dashboardMenuItem) dashboardMenuItem.style.display = isLoggedIn ? 'list-item' : 'none';
@@ -53,7 +102,6 @@ function updateMobileMainMenu(isLoggedIn) {
     let mobileAboutItem = document.querySelector('.slicknav_menu a[href*="/about"]')?.closest('li');
 
     if (!mobileAboutItem && mobileProfileItem) {
-        // Clone the structure from an existing item to match styling
         mobileAboutItem = mobileProfileItem.cloneNode(true);
         mobileAboutItem.querySelector('a').href = 'about.html';
         mobileAboutItem.querySelector('a').textContent = 'About Us';
@@ -65,14 +113,11 @@ function updateMobileMainMenu(isLoggedIn) {
     if (mobileAboutItem) mobileAboutItem.style.display = isLoggedIn ? 'none' : 'list-item';
 }
 
-
+// ==================== AUTH STATE LISTENER ====================
 onAuthStateChanged(auth, async (user) => {
     const loginBtn = document.getElementById("login-btn");
     const logoutBtn = document.getElementById("logout-btn");
     const userInfo = document.getElementById("user-info");
-
-    // Dashboard link
-    const dashboardLink = document.querySelector('a.nav-link[href="dashboard.html"]');
 
     if (user) {
         // ✅ Logged in
@@ -93,31 +138,14 @@ onAuthStateChanged(auth, async (user) => {
         }
 
         const welcomeText = `Welcome, ${displayName}!`;
-
         if (userInfo) userInfo.innerHTML = welcomeText;
 
-        // ✅ Update mobile menu (NEW)
         if (window.updateMobileAuthMenu) {
             window.updateMobileAuthMenu(true, welcomeText);
         }
 
-        // === SMART DASHBOARD LINK ===
-        if (dashboardLink) {
-            try {
-                const token = await user.getIdTokenResult();
-                const isAdmin = token.claims.admin === true;
-
-                if (isAdmin) {
-                    dashboardLink.textContent = "Admin Dashboard";
-                    dashboardLink.href = "/admin/admin.html";
-                } else {
-                    dashboardLink.textContent = "My Dashboard";
-                    dashboardLink.href = "/dashboard.html";
-                }
-            } catch (e) {
-                console.error("Error checking admin role:", e);
-            }
-        }
+        // Update dashboard links for both desktop and mobile
+        await updateDashboardLinks(user);
 
     } else {
         // ❌ Logged out
@@ -126,16 +154,14 @@ onAuthStateChanged(auth, async (user) => {
         if (userInfo) userInfo.innerHTML = "";
         updateMainMenu(false);
 
-        // ✅ Update mobile menu (NEW)
         if (window.updateMobileAuthMenu) {
             window.updateMobileAuthMenu(false, "");
         }
 
-        // Reset dashboard link
-        if (dashboardLink) {
-            dashboardLink.textContent = "My Dashboard";
-            dashboardLink.href = "/dashboard.html";
-        }
+        // Reset dashboard links
+        const desktopLink = document.querySelector('a.nav-link[href*="dashboard"]');
+        const mobileLink = document.querySelector('.slicknav_menu a[href*="dashboard"]');
+        resetDashboardLinks(desktopLink, mobileLink);
     }
 });
 
