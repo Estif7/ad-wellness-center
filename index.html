@@ -15,7 +15,7 @@
 	<meta property="og:title" content="AD Wellness Center | Fitness, Strength & Wellness">
 	<meta property="og:description" content="Explore expert fitness training, strength programs, and wellness support designed to help you feel stronger, healthier, and more confident.">
 	<meta property="og:type" content="website">
-	<meta property="og:image" content="/images/AD-Wellness-Center-Logo.jpg">
+	<meta property="og:image" content="/images/AD-Wellness-Center-Logo.jpg" alt="AD Wellness Center Logo">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="AD Wellness Center | Fitness, Strength & Wellness">
 	<meta name="twitter:description" content="Expert fitness coaching, strength training, and wellness programs for healthier, stronger living in Addis Ababa, Ethiopia.">
@@ -55,7 +55,7 @@
             <div class="container">
                 <!-- Logo Start -->
                 <a class="navbar-brand" href="index.html">
-                    <img src="images/logo.png" alt="Logo">
+                    <img src="images/logo.png" alt="AD Wellness Center Logo">
                 </a>
                 <!-- Logo End -->
 
@@ -260,7 +260,7 @@
                         <div class="about-us-image-box-1-gold">
                             <div class="about-us-image-gold">
                                 <figure class="image-anime">
-                                    <img src="images/trainers-1.jpg" alt="">
+                                    <img src="images/trainers-1.jpg" alt="Personal Trainer, Coach Amanuel" loading="lazy">
                                 </figure>
                             </div>
                             
@@ -281,7 +281,7 @@
                         <div class="about-us-image-box-2-gold">
                             <div class="about-us-image-gold">
                                 <figure class="image-anime">
-                                    <img src="images/coach-2.jpg" alt="">
+                                    <img src="images/coach-2.jpg" alt="Personal Trainer, Nutritionist, Coach Dagmawi Yohannes" loading="lazy">
                                 </figure>
                             </div>
                         </div>
@@ -321,7 +321,7 @@
                             </div>
                             <div class="program-item-image-gold">
                                 <figure>
-                                    <img src="images/illustration-3.png" alt="">
+                                    <img src="images/illustration-3.png" alt="" loading="lazy">
                                 </figure>
                             </div>
                         </div>
@@ -347,7 +347,7 @@
                             </div>                            
                             <div class="program-item-image-gold">
                                 <figure>
-                                    <img src="images/illustration-1.png" alt="">
+                                    <img src="images/illustration-1.png" alt="" loading="lazy">
                                 </figure>
                             </div>
                         </div>
@@ -373,7 +373,7 @@
                             </div>                            
                             <div class="program-item-image-gold">
                                 <figure>
-                                    <img src="images/home-workout.png" alt="Home Workout Programs">
+                                    <img src="images/home-workout.png" alt="Home Workout Programs" loading="lazy">
                                 </figure>
                             </div>
                         </div>
@@ -401,7 +401,7 @@
                             </div>
                             <div class="program-item-image-gold">
                                 <figure>
-                                    <img src="images/nutrition.png" alt="Nutrition & Guidance">
+                                    <img src="images/nutrition.png" alt="Nutrition & Guidance" loading="lazy">
                                 </figure>
                             </div>
                         </div>
@@ -428,7 +428,7 @@
                             </div>                            
                             <div class="program-item-image-gold">
                                 <figure>
-                                    <img src="images/joint-workouts.png" alt="Joint Health & Mobility">
+                                    <img src="images/joint-workouts.png" alt="Joint Health & Mobility" loading="lazy">
                                 </figure>
                             </div>
                         </div>
@@ -455,7 +455,7 @@
                             </div>                            
                             <div class="program-item-image-gold">
                                 <figure>
-                                    <img src="images/illustration-2.png" alt="">
+                                    <img src="images/illustration-2.png" alt="" loading="lazy">
                                 </figure>
                             </div>
                         </div>
@@ -495,7 +495,7 @@
                 <div class="col-xl-6">
                     <div class="what-we-do-image-gold">
                         <figure class="image-anime reveal">
-                            <img src="images/trainers-2.JPG" alt="coach Aman">
+                            <img src="images/trainers-2.JPG" alt="Coach Amanuel" loading="lazy">
                         </figure>
                     </div>
                 </div>
@@ -614,7 +614,7 @@
                 <div class="col-xl-6">
                     <div class="what-we-do-image-gold">
                         <figure class="image-anime reveal">
-                            <img src="images/trainers-4.JPG" alt="coach Dagi">
+                            <img src="images/trainers-4.JPG" alt="Coach Dagmawi Yohannes" loading="lazy">
                         </figure>
                     </div>
                 </div>
@@ -670,7 +670,7 @@
                         <!-- Why Choose Us Image Start -->
                         <div class="why-choose-us-image-gold">
                             <figure>
-                                <img src="images/why-choose-us-image.png" alt="">
+                                <img src="images/why-choose-us-image.png" alt="" loading="lazy">
                             </figure>
                         </div>
                         <!-- Why Choose Us Image End -->
@@ -880,7 +880,7 @@
                     <div class="faqs-image-box-gold">
                         <div class="faqs-img-gold">
                             <figure class="image-anime">
-                                <img src="images/faqs-image-gold.jpg" alt="">
+                                <img src="images/faqs-image-gold.jpg" alt="" loading="lazy">
                             </figure>
                         </div>
 
@@ -1220,6 +1220,17 @@
         document.addEventListener("DOMContentLoaded", loadPricingPlans);
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('img:not([loading])').forEach(img => {
+            // Don't override images that already have loading="eager"
+            if (img.loading !== 'eager') {
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            }
+        });
+        });
+    </script>
 
     <!-- Jquery Library File -->
     <script src="js/jquery-3.7.1.min.js"></script>
